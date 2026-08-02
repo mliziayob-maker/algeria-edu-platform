@@ -22,18 +22,30 @@
                 <h1 class="text-lg font-bold bg-gradient-to-r from-emerald-400 to-teal-200 bg-clip-text text-transparent">
                     منصة التميّز التعليمية
                 </h1>
-                <p class="text-xs text-slate-400 hidden sm:block">مطابقة للمنهج الرسمي لوزارة التربية الوطنية</p>
+                <p class="text-xs text-slate-400 hidden sm:block">شاملة لجميع الأطوار والسنوات الدراسية</p>
             </div>
         </div>
 
-        <div class="flex items-center gap-3">
-            <span class="hidden md:inline-block px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                السنة 3 ثانوي (BAC)
-            </span>
-            <div class="flex items-center gap-2 bg-slate-800 p-1.5 rounded-full border border-slate-700">
-                <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-slate-950 font-bold text-sm">أ</div>
-                <span class="text-xs font-medium pl-3 pr-1 text-slate-300">أمين طالب</span>
-            </div>
+        <!-- اختيار الطور والسنة -->
+        <div class="flex items-center gap-2">
+            <select id="grade-select" onchange="switchGrade()" class="bg-slate-800 text-xs font-semibold text-emerald-400 border border-emerald-500/30 rounded-lg px-3 py-2 outline-none focus:border-emerald-500">
+                <optgroup label="الطور الثانوي">
+                    <option value="sec3">السنة 3 ثانوي (BAC)</option>
+                    <option value="sec2">السنة 2 ثانوي</option>
+                    <option value="sec1">السنة 1 ثانوي</option>
+                </optgroup>
+                <optgroup label="الطور المتوسط">
+                    <option value="bem">السنة 4 متوسط (BEM)</option>
+                    <option value="mid3">السنة 3 متوسط</option>
+                    <option value="mid2">السنة 2 متوسط</option>
+                    <option value="mid1">السنة 1 متوسط</option>
+                </optgroup>
+                <optgroup label="الطور الابتدائي">
+                    <option value="prim5">السنة 5 ابتدائي</option>
+                    <option value="prim4">السنة 4 ابتدائي</option>
+                    <option value="prim3">السنة 3 ابتدائي</option>
+                </optgroup>
+            </select>
         </div>
     </header>
 
@@ -41,126 +53,166 @@
     <main class="max-w-7xl mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 mt-4">
         
         <div class="lg:col-span-8 space-y-6">
-            <!-- بطاقة الترحيب -->
             <div class="bg-gradient-to-br from-slate-900 to-slate-900/50 p-6 rounded-2xl border border-slate-800 relative overflow-hidden">
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <h2 class="text-xl font-bold text-white">مرحباً بك في رحلة التفوق 🚀</h2>
-                        <p class="text-xs md:text-sm text-slate-400 mt-1">اختر المادة للبدء في دراسة الوحدات والدروس المباشرة.</p>
-                    </div>
-                </div>
+                <h2 id="welcome-title" class="text-xl font-bold text-white">اختر المادة وابدأ الحصّة التفاعلية 🤖🎓</h2>
+                <p id="welcome-sub" class="text-xs md:text-sm text-slate-400 mt-1">المحتوى والأستاذ الذكي مخصصان للسنة المختارة.</p>
             </div>
 
-            <!-- قائمة المواد التفاعلية -->
-            <div>
-                <h3 class="text-lg font-bold text-slate-200 mb-4 flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-                    المواد الدراسية (اضغط لفتح الدروس)
-                </h3>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    
-                    <!-- بطاقة العلوم الطبيعية -->
-                    <div onclick="openSubject('sciences')" class="group bg-slate-900 hover:bg-slate-800 p-5 rounded-2xl border border-slate-800 hover:border-emerald-500/50 transition cursor-pointer">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center text-2xl">🧬</div>
-                            <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full border border-slate-700">المعامل: 6</span>
-                        </div>
-                        <h4 class="font-bold text-lg text-slate-100 group-hover:text-emerald-400 transition">علوم الطبيعة والحياة</h4>
-                        <p class="text-xs text-slate-400 mt-1">المجال 1: التخصص الوظيفي للبروتينات</p>
-                        <div class="mt-4 pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-emerald-400 font-bold">
-                            <span>12 درس تفاعلي</span>
-                            <span>عرض الدروس ←</span>
-                        </div>
-                    </div>
-
-                    <!-- بطاقة العلوم الفيزيائية -->
-                    <div onclick="openSubject('physics')" class="group bg-slate-900 hover:bg-slate-800 p-5 rounded-2xl border border-slate-800 hover:border-teal-500/50 transition cursor-pointer">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-400 border border-teal-500/20 flex items-center justify-center text-2xl">⚡</div>
-                            <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full border border-slate-700">المعامل: 5</span>
-                        </div>
-                        <h4 class="font-bold text-lg text-slate-100 group-hover:text-teal-400 transition">العلوم الفيزيائية</h4>
-                        <p class="text-xs text-slate-400 mt-1">الوحدة 1: المتابعة الزمنية لتحول كيميائي</p>
-                        <div class="mt-4 pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-teal-400 font-bold">
-                            <span>15 محاكاة + تمارين</span>
-                            <span>عرض الدروس ←</span>
-                        </div>
-                    </div>
-
-                </div>
+            <!-- قائمة المواد الديناميكية -->
+            <div id="subjects-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- تعبئة المواد عبر JS -->
             </div>
         </div>
 
-        <!-- المساعد الذكي -->
-        <div class="lg:col-span-4">
-            <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 sticky top-24">
-                <h3 class="font-bold text-slate-200 text-sm mb-2">🤖 المساعد البيدغوجي</h3>
-                <p class="text-xs text-slate-400 mb-4">اضغط على أي مادة لعرض الدروس والملخصات مباشرة.</p>
+        <div class="lg:col-span-4 space-y-4">
+            <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800">
+                <h3 class="font-bold text-slate-200 text-sm mb-2">🎓 الأطوار المتاحة بالمنصة</h3>
+                <ul class="text-xs text-slate-400 space-y-2">
+                    <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> الطور الثانوي (1، 2، 3 ثانوي)</li>
+                    <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-teal-400"></span> الطور المتوسط (1، 2، 3، 4 متوسط)</li>
+                    <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-cyan-400"></span> الطور الابتدائي (جميع السنوات)</li>
+                </ul>
             </div>
         </div>
     </main>
 
-    <!-- 3. نافذة عرض الدروس (Modal) -->
+    <!-- 3. نافذة اختيار الدروس -->
     <div id="lessons-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-800 w-full max-w-2xl rounded-2xl p-6 relative max-h-[85vh] overflow-y-auto">
-            <button onclick="closeModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
+        <div class="bg-slate-900 border border-slate-800 w-full max-w-2xl rounded-2xl p-6 relative">
+            <button onclick="closeModal('lessons-modal')" class="absolute top-4 left-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
             <h3 id="modal-title" class="text-xl font-bold text-emerald-400 mb-2"></h3>
             <p id="modal-desc" class="text-xs text-slate-400 mb-6"></p>
-            
-            <div id="lessons-list" class="space-y-3">
-                <!-- يتم تعبئة الدروس عبر JavaScript -->
+            <div id="lessons-list" class="space-y-3"></div>
+        </div>
+    </div>
+
+    <!-- 4. قاعة الحصة التفاعلية -->
+    <div id="teacher-modal" class="fixed inset-0 bg-slate-950 z-50 hidden flex flex-col">
+        <div class="bg-slate-900 border-b border-slate-800 px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-xl">
+                    👨‍🏫
+                </div>
+                <div>
+                    <h3 id="teacher-name" class="font-bold text-slate-100 text-sm">الأستاذ الذكي</h3>
+                    <p id="teacher-topic" class="text-xs text-emerald-400">الدرس</p>
+                </div>
+            </div>
+            <button onclick="closeModal('teacher-modal')" class="px-3 py-1.5 rounded-lg bg-slate-800 text-xs font-semibold text-slate-300 hover:bg-slate-700">إنهاء الحصة ✕</button>
+        </div>
+
+        <div id="chat-box" class="flex-1 p-4 md:p-6 overflow-y-auto space-y-4 max-w-4xl mx-auto w-full"></div>
+
+        <div class="bg-slate-900 border-t border-slate-800 p-4">
+            <div class="max-w-4xl mx-auto flex gap-2">
+                <input id="student-input" type="text" placeholder="أكتب إجابتك للأستاذ هنا..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-emerald-500">
+                <button onclick="sendStudentAnswer()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs transition">إرسال الإجابة</button>
             </div>
         </div>
     </div>
 
-    <!-- السكربت التفاعلي -->
+    <!-- السكربت لإدارة كافة الأطوار والسنوات -->
     <script>
-        const lessonsData = {
-            sciences: {
-                title: "🧬 علوم الطبيعة والحياة — دروس BAC",
-                desc: "المجال الأول: التخصص الوظيفي للبروتينات وفق المنهج الوزاري",
-                items: [
-                    { title: "الدرس 01: آليات تركيب البروتين (الاستنساخ والترجمة)", type: "شرح مفصل + رسومات تخطيطية", duration: "45 دقيقة" },
-                    { title: "الدرس 02: العلاقة بين بنية ووظيفة البروتين", type: "ملخص شروحات + تمارين محلولة", duration: "30 دقيقة" },
-                    { title: "الدرس 03: النشاط الإنزيمي للبروتينات والعوامل المؤثرة", type: "تجارب واختبارات قياسية", duration: "50 دقيقة" },
-                    { title: "الدرس 04: دور البروتينات في الدفاع عن الذات (المناعة)", type: "منهجية الإجابة الوزارية", duration: "60 دقيقة" }
+        const curriculumData = {
+            sec3: {
+                title: "السنة 3 ثانوي (شهادة البكالوريا)",
+                subjects: [
+                    { id: "s3_sci", name: "علوم الطبيعة والحياة", icon: "🧬", coef: 6, teacher: "د. عقبة", intro: "أهلاً بك يا بطل البكالوريا! جاهز لدراسة آليات تركيب البروتين؟" },
+                    { id: "s3_phy", name: "العلوم الفيزيائية", icon: "⚡", coef: 5, teacher: "أ. ابن الهيثم", intro: "مرحباً بك! سنراجع اليوم المتابعة الزمنية للتفاعلات الكيميائية." },
+                    { id: "s3_math", name: "الرياضيات", icon: "📐", coef: 6, teacher: "أ. الخوارزمي", intro: "أهلاً بك، سنتناول اليوم الاستمراريات والدوال العددية." }
                 ]
             },
-            physics: {
-                title: "⚡ العلوم الفيزيائية — دروس BAC",
-                desc: "الوحدة الأولى: المتابعة الزمنية لتحول كيميائي في وسط مائي",
-                items: [
-                    { title: "الدرس 01: طرق المتابعة الزمنية (عن طريق قياس الناقلية وضغط الغاز)", type: "قوانين + امثلة تطبيقية", duration: "40 دقيقة" },
-                    { title: "الدرس 02: سرعة التفاعل وسرعة الاختفاء والتأكل", type: "تمارين استخراج السرعة بيانيا", duration: "35 دقيقة" },
-                    { title: "الدرس 03: زمن نصف التفاعل t1/2 وعوامل السرعة الكيميائية", type: "منهجية حصرية للبكالوريا", duration: "45 دقيقة" }
+            bem: {
+                title: "السنة 4 متوسط (شهادة التعليم المتوسط BEM)",
+                subjects: [
+                    { id: "b_sci", name: "العلوم الطبيعية", icon: "🌿", coef: 2, teacher: "أ. مريم", intro: "أهلاً بك! موضوع اليوم هو التحول الغذائي في الأنبوب الهضمي." },
+                    { id: "b_phy", name: "العلوم الفيزيائية والبلورة", icon: "💡", coef: 2, teacher: "أ. علي", intro: "مرحباً! سنكتشف اليوم الشاردة والمحلول الشاردي." },
+                    { id: "b_arab", name: "اللغة العربية", icon: "📖", coef: 5, teacher: "أ. بشير", intro: "أهلاً بك، درس اليوم في قواعد اللغة والجملة المركبة." }
+                ]
+            },
+            prim5: {
+                title: "السنة 5 ابتدائي (امتحان تقييم المكتسبات)",
+                subjects: [
+                    { id: "p5_math", name: "الرياضيات", icon: "🔢", coef: 1, teacher: "الأستاذة أمل", intro: "مرحباً يا شاطر! هيا نتعلم الحساب والعمليات الأربع اليوم!" },
+                    { id: "p5_arab", name: "اللغة العربية", icon: "✏️", coef: 1, teacher: "الأستاذة أمل", intro: "أهلاً بك! اليوم سنقرأ نصاً قصيراً ونستخرج منه الفاعل والفعلي." }
                 ]
             }
         };
 
-        function openSubject(key) {
-            const data = lessonsData[key];
-            if (!data) return;
-            document.getElementById('modal-title').innerText = data.title;
-            document.getElementById('modal-desc').innerText = data.desc;
+        let currentTeacher = "";
+
+        function switchGrade() {
+            const gradeKey = document.getElementById('grade-select').value;
+            const data = curriculumData[gradeKey] || curriculumData['sec3'];
             
-            const list = document.getElementById('lessons-list');
-            list.innerHTML = data.items.map(item => `
-                <div class="p-4 bg-slate-950 rounded-xl border border-slate-800 hover:border-emerald-500/40 transition flex justify-between items-center">
-                    <div>
-                        <h4 class="font-bold text-sm text-slate-100">${item.title}</h4>
-                        <span class="text-[11px] text-slate-400 mt-1 block">${item.type} • ⏱️ ${item.duration}</span>
+            document.getElementById('welcome-title').innerText = `حصة ${data.title} 🤖🎓`;
+            
+            const container = document.getElementById('subjects-container');
+            container.innerHTML = data.subjects.map(sub => `
+                <div onclick="openLesson('${sub.teacher}', '${sub.name}', '${encodeURIComponent(sub.intro)}')" class="group bg-slate-900 hover:bg-slate-800 p-5 rounded-2xl border border-slate-800 hover:border-emerald-500/50 transition cursor-pointer">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center text-2xl">${sub.icon}</div>
+                        <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full border border-slate-700">المعامل: ${sub.coef}</span>
                     </div>
-                    <button class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-3 py-1.5 rounded-lg text-xs font-bold transition">بدء الدرس</button>
+                    <h4 class="font-bold text-lg text-slate-100 group-hover:text-emerald-400 transition">${sub.name}</h4>
+                    <p class="text-xs text-slate-400 mt-1">مع الأستاذ الذكي: ${sub.teacher}</p>
+                    <div class="mt-4 pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-emerald-400 font-bold">
+                        <span>الحصة التفاعلية المباشرة</span>
+                        <span>دخول الحصة ←</span>
+                    </div>
                 </div>
             `).join('');
-
-            document.getElementById('lessons-modal').classList.remove('hidden');
         }
 
-        function closeModal() {
-            document.getElementById('lessons-modal').classList.add('hidden');
+        function openLesson(teacher, subject, encodedIntro) {
+            currentTeacher = teacher;
+            document.getElementById('teacher-name').innerText = teacher;
+            document.getElementById('teacher-topic').innerText = `مادة: ${subject}`;
+
+            const chatBox = document.getElementById('chat-box');
+            chatBox.innerHTML = `
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl max-w-2xl leading-relaxed">
+                    <p class="text-xs font-bold text-emerald-400 mb-1">${teacher}</p>
+                    <p class="text-xs text-slate-200">${decodeURIComponent(encodedIntro)}</p>
+                </div>
+            `;
+
+            document.getElementById('teacher-modal').classList.remove('hidden');
         }
+
+        function sendStudentAnswer() {
+            const input = document.getElementById('student-input');
+            const text = input.value.trim();
+            if(!text) return;
+
+            const chatBox = document.getElementById('chat-box');
+            chatBox.innerHTML += `
+                <div class="bg-emerald-500/10 border border-emerald-500/30 p-4 rounded-2xl max-w-2xl mr-auto text-left leading-relaxed">
+                    <p class="text-xs font-bold text-emerald-300 mb-1">أنت (الطالب)</p>
+                    <p class="text-xs text-slate-200">${text}</p>
+                </div>
+            `;
+
+            input.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            setTimeout(() => {
+                chatBox.innerHTML += `
+                    <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl max-w-2xl leading-relaxed">
+                        <p class="text-xs font-bold text-emerald-400 mb-1">${currentTeacher}</p>
+                        <p class="text-xs text-slate-200">إجابة واضحة وأداء ممتاز! لننتقل إلى خطوة التميز القادمة ✨.</p>
+                    </div>
+                `;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 1000);
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        // تشغيل تلقائي عند التحميل
+        switchGrade();
     </script>
 </body>
 </html>
