@@ -22,11 +22,10 @@
                 <h1 class="text-lg font-bold bg-gradient-to-r from-emerald-400 to-teal-200 bg-clip-text text-transparent">
                     منصة التميّز التعليمية
                 </h1>
-                <p class="text-xs text-slate-400 hidden sm:block">شاملة لجميع الأطوار والسنوات الدراسية</p>
+                <p class="text-xs text-slate-400 hidden sm:block">شاملة لجميع الأطوار بمفهوم الأستاذ الذكي 🤖</p>
             </div>
         </div>
 
-        <!-- اختيار الطور والسنة -->
         <div class="flex items-center gap-2">
             <select id="grade-select" onchange="switchGrade()" class="bg-slate-800 text-xs font-semibold text-emerald-400 border border-emerald-500/30 rounded-lg px-3 py-2 outline-none focus:border-emerald-500">
                 <optgroup label="الطور الثانوي">
@@ -43,98 +42,85 @@
                 <optgroup label="الطور الابتدائي">
                     <option value="prim5">السنة 5 ابتدائي</option>
                     <option value="prim4">السنة 4 ابتدائي</option>
-                    <option value="prim3">السنة 3 ابتدائي</option>
                 </optgroup>
             </select>
         </div>
     </header>
 
-    <!-- 2. محتوى لوحة التحكم -->
+    <!-- 2. المحتوى الرئيسي -->
     <main class="max-w-7xl mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 mt-4">
-        
         <div class="lg:col-span-8 space-y-6">
             <div class="bg-gradient-to-br from-slate-900 to-slate-900/50 p-6 rounded-2xl border border-slate-800 relative overflow-hidden">
-                <h2 id="welcome-title" class="text-xl font-bold text-white">اختر المادة وابدأ الحصّة التفاعلية 🤖🎓</h2>
-                <p id="welcome-sub" class="text-xs md:text-sm text-slate-400 mt-1">المحتوى والأستاذ الذكي مخصصان للسنة المختارة.</p>
+                <h2 id="welcome-title" class="text-xl font-bold text-white">اختر المادة وابدأ الحصّة 🤖🎓</h2>
+                <p class="text-xs md:text-sm text-slate-400 mt-1">تفاعل متبادل، تبسيط مبتكر، وتوجيه منهجية الإجابة.</p>
             </div>
 
-            <!-- قائمة المواد الديناميكية -->
-            <div id="subjects-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <!-- تعبئة المواد عبر JS -->
-            </div>
+            <div id="subjects-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
         </div>
 
         <div class="lg:col-span-4 space-y-4">
             <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800">
-                <h3 class="font-bold text-slate-200 text-sm mb-2">🎓 الأطوار المتاحة بالمنصة</h3>
+                <h3 class="font-bold text-slate-200 text-sm mb-2">🌟 ميزات الأستاذ الذكي</h3>
                 <ul class="text-xs text-slate-400 space-y-2">
-                    <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> الطور الثانوي (1، 2، 3 ثانوي)</li>
-                    <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-teal-400"></span> الطور المتوسط (1، 2، 3، 4 متوسط)</li>
-                    <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-cyan-400"></span> الطور الابتدائي (جميع السنوات)</li>
+                    <li class="flex items-center gap-2">✨ شرح مبسط بالتدرج الخطوي</li>
+                    <li class="flex items-center gap-2">💡 تقديم أمثلة توضيحية واقعية</li>
+                    <li class="flex items-center gap-2">🎯 تدريب على المنهجية الرسمية للبكالوريا و BEM</li>
                 </ul>
             </div>
         </div>
     </main>
 
-    <!-- 3. نافذة اختيار الدروس -->
-    <div id="lessons-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-800 w-full max-w-2xl rounded-2xl p-6 relative">
-            <button onclick="closeModal('lessons-modal')" class="absolute top-4 left-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
-            <h3 id="modal-title" class="text-xl font-bold text-emerald-400 mb-2"></h3>
-            <p id="modal-desc" class="text-xs text-slate-400 mb-6"></p>
-            <div id="lessons-list" class="space-y-3"></div>
-        </div>
-    </div>
-
-    <!-- 4. قاعة الحصة التفاعلية -->
+    <!-- 3. قاعة الدرس التفاعلية -->
     <div id="teacher-modal" class="fixed inset-0 bg-slate-950 z-50 hidden flex flex-col">
         <div class="bg-slate-900 border-b border-slate-800 px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-xl">
-                    👨‍🏫
-                </div>
+                <div class="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-xl">👨‍🏫</div>
                 <div>
                     <h3 id="teacher-name" class="font-bold text-slate-100 text-sm">الأستاذ الذكي</h3>
-                    <p id="teacher-topic" class="text-xs text-emerald-400">الدرس</p>
+                    <p id="teacher-topic" class="text-xs text-emerald-400">مادة</p>
                 </div>
             </div>
             <button onclick="closeModal('teacher-modal')" class="px-3 py-1.5 rounded-lg bg-slate-800 text-xs font-semibold text-slate-300 hover:bg-slate-700">إنهاء الحصة ✕</button>
         </div>
 
+        <!-- المحادثة -->
         <div id="chat-box" class="flex-1 p-4 md:p-6 overflow-y-auto space-y-4 max-w-4xl mx-auto w-full"></div>
 
-        <div class="bg-slate-900 border-t border-slate-800 p-4">
+        <!-- أزرار التفاعل السريع + الإدخال -->
+        <div class="bg-slate-900 border-t border-slate-800 p-4 space-y-3">
+            <div class="max-w-4xl mx-auto flex gap-2 overflow-x-auto pb-1">
+                <button onclick="quickAction('أعد الشرح بطريقة أسهل')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg border border-slate-700 whitespace-nowrap">🔄 أعد الشرح بأسلوب أسهل</button>
+                <button onclick="quickAction('اعطني مثالاً من الواقع')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg border border-slate-700 whitespace-nowrap">💡 اعطني مثالاً واقعياً</button>
+                <button onclick="quickAction('اعطني سؤالاً لأختبر فهمي')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg border border-slate-700 whitespace-nowrap">❓ اختبر فهمي بسؤال</button>
+            </div>
             <div class="max-w-4xl mx-auto flex gap-2">
-                <input id="student-input" type="text" placeholder="أكتب إجابتك للأستاذ هنا..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-emerald-500">
-                <button onclick="sendStudentAnswer()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs transition">إرسال الإجابة</button>
+                <input id="student-input" type="text" placeholder="أكتب إجابتك أو استفسارك للأستاذ..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-emerald-500">
+                <button onclick="sendStudentAnswer()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs transition">إرسال</button>
             </div>
         </div>
     </div>
 
-    <!-- السكربت لإدارة كافة الأطوار والسنوات -->
     <script>
         const curriculumData = {
             sec3: {
-                title: "السنة 3 ثانوي (شهادة البكالوريا)",
+                title: "السنة 3 ثانوي (BAC)",
                 subjects: [
-                    { id: "s3_sci", name: "علوم الطبيعة والحياة", icon: "🧬", coef: 6, teacher: "د. عقبة", intro: "أهلاً بك يا بطل البكالوريا! جاهز لدراسة آليات تركيب البروتين؟" },
-                    { id: "s3_phy", name: "العلوم الفيزيائية", icon: "⚡", coef: 5, teacher: "أ. ابن الهيثم", intro: "مرحباً بك! سنراجع اليوم المتابعة الزمنية للتفاعلات الكيميائية." },
-                    { id: "s3_math", name: "الرياضيات", icon: "📐", coef: 6, teacher: "أ. الخوارزمي", intro: "أهلاً بك، سنتناول اليوم الاستمراريات والدوال العددية." }
+                    { name: "علوم الطبيعة والحياة", icon: "🧬", coef: 6, teacher: "د. عقبة", intro: "مرحباً بك يا بطل! أنا الأستاذ عقبة. اليوم سنفكك لغز تركيب البروتين خطوة بخطوة وبأسهل طريقة." },
+                    { name: "العلوم الفيزيائية", icon: "⚡", coef: 5, teacher: "أ. ابن الهيثم", intro: "أهلاً بك! سر الفيزياء يكمن في الفهم لا الحفظ. هيا بنا نكتشف المتابعة الزمنية بالتفصيل." },
+                    { name: "الرياضيات", icon: "📐", coef: 6, teacher: "أ. الخوارزمي", intro: "أهلاً بك! الرياضيات رياضة للعقل، سنشرح اليوم الاستمرارية والدوال بشكل مبسط جداً." }
                 ]
             },
             bem: {
-                title: "السنة 4 متوسط (شهادة التعليم المتوسط BEM)",
+                title: "السنة 4 متوسط (BEM)",
                 subjects: [
-                    { id: "b_sci", name: "العلوم الطبيعية", icon: "🌿", coef: 2, teacher: "أ. مريم", intro: "أهلاً بك! موضوع اليوم هو التحول الغذائي في الأنبوب الهضمي." },
-                    { id: "b_phy", name: "العلوم الفيزيائية والبلورة", icon: "💡", coef: 2, teacher: "أ. علي", intro: "مرحباً! سنكتشف اليوم الشاردة والمحلول الشاردي." },
-                    { id: "b_arab", name: "اللغة العربية", icon: "📖", coef: 5, teacher: "أ. بشير", intro: "أهلاً بك، درس اليوم في قواعد اللغة والجملة المركبة." }
+                    { name: "العلوم الطبيعية", icon: "🌿", coef: 2, teacher: "أ. مريم", intro: "أهلاً بك يا بطل! سنتعرف اليوم على التغذية عند الإنسان وكيف يمتص الجسم الأغذية بسهولة." },
+                    { name: "العلوم الفيزيائية", icon: "💡", coef: 2, teacher: "أ. علي", intro: "مرحباً بك! موضوعنا اليوم رائع وممتع حول التحولات الكيميائية في المحاليل الشاردية." }
                 ]
             },
             prim5: {
-                title: "السنة 5 ابتدائي (امتحان تقييم المكتسبات)",
+                title: "السنة 5 ابتدائي",
                 subjects: [
-                    { id: "p5_math", name: "الرياضيات", icon: "🔢", coef: 1, teacher: "الأستاذة أمل", intro: "مرحباً يا شاطر! هيا نتعلم الحساب والعمليات الأربع اليوم!" },
-                    { id: "p5_arab", name: "اللغة العربية", icon: "✏️", coef: 1, teacher: "الأستاذة أمل", intro: "أهلاً بك! اليوم سنقرأ نصاً قصيراً ونستخرج منه الفاعل والفعلي." }
+                    { name: "الرياضيات", icon: "🔢", coef: 1, teacher: "الأستاذة أمل", intro: "مرحباً يا بطل! اليوم لدينا ألعاب رياضية ومسائل ممتعة جداً، هل أنت جاهز؟" }
                 ]
             }
         };
@@ -144,8 +130,7 @@
         function switchGrade() {
             const gradeKey = document.getElementById('grade-select').value;
             const data = curriculumData[gradeKey] || curriculumData['sec3'];
-            
-            document.getElementById('welcome-title').innerText = `حصة ${data.title} 🤖🎓`;
+            document.getElementById('welcome-title').innerText = `حصص ${data.title} 🤖🎓`;
             
             const container = document.getElementById('subjects-container');
             container.innerHTML = data.subjects.map(sub => `
@@ -155,9 +140,9 @@
                         <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full border border-slate-700">المعامل: ${sub.coef}</span>
                     </div>
                     <h4 class="font-bold text-lg text-slate-100 group-hover:text-emerald-400 transition">${sub.name}</h4>
-                    <p class="text-xs text-slate-400 mt-1">مع الأستاذ الذكي: ${sub.teacher}</p>
+                    <p class="text-xs text-slate-400 mt-1">الأستاذ الذكي: ${sub.teacher}</p>
                     <div class="mt-4 pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-emerald-400 font-bold">
-                        <span>الحصة التفاعلية المباشرة</span>
+                        <span>بدء الشرح التفاعلي</span>
                         <span>دخول الحصة ←</span>
                     </div>
                 </div>
@@ -176,13 +161,12 @@
                     <p class="text-xs text-slate-200">${decodeURIComponent(encodedIntro)}</p>
                 </div>
             `;
-
             document.getElementById('teacher-modal').classList.remove('hidden');
         }
 
-        function sendStudentAnswer() {
+        function sendStudentAnswer(customText = null) {
             const input = document.getElementById('student-input');
-            const text = input.value.trim();
+            const text = customText || input.value.trim();
             if(!text) return;
 
             const chatBox = document.getElementById('chat-box');
@@ -193,25 +177,33 @@
                 </div>
             `;
 
-            input.value = '';
+            if(!customText) input.value = '';
             chatBox.scrollTop = chatBox.scrollHeight;
 
             setTimeout(() => {
+                let response = "ممتاز جداً! إجابة دقيقة تدل على فهمك العميق. فلننتقل إلى الجزئية التوضيحية التالية ✨.";
+                if(text.includes('أسهل')) response = "ولا يهمك! تخيل النواة مثل مكتبة رئيسية، والـ DNA هو الكتاب الأصلي الذي لا يخرج منها، والـ ARNm هو النسخة المصورة التي نأخذها للعمل خارج المكتبة!";
+                if(text.includes('مثالاً')) response = "مثال من الواقع: مثل الوصفة الطبية التي يكتبها الطبيب، المريض يأخذ النسخة للفيزيائي ليصنع له الدواء!";
+                if(text.includes('سؤال')) response = "إليك السؤال: ما اسم الإنزيم الذي يقوم بقراءة الـ DNA وصناعة الـ ARNm؟";
+
                 chatBox.innerHTML += `
                     <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl max-w-2xl leading-relaxed">
                         <p class="text-xs font-bold text-emerald-400 mb-1">${currentTeacher}</p>
-                        <p class="text-xs text-slate-200">إجابة واضحة وأداء ممتاز! لننتقل إلى خطوة التميز القادمة ✨.</p>
+                        <p class="text-xs text-slate-200">${response}</p>
                     </div>
                 `;
                 chatBox.scrollTop = chatBox.scrollHeight;
-            }, 1000);
+            }, 800);
+        }
+
+        function quickAction(text) {
+            sendStudentAnswer(text);
         }
 
         function closeModal(id) {
             document.getElementById(id).classList.add('hidden');
         }
 
-        // تشغيل تلقائي عند التحميل
         switchGrade();
     </script>
 </body>
