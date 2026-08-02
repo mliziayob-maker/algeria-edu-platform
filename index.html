@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منصة التميّز التعليمية الجزائرية 🇩🇿</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Tajawal', sans-serif; }
@@ -13,8 +12,8 @@
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-emerald-500 selection:text-slate-950 pb-12">
 
-    <!-- 1. الشريط العلوي الذكي -->
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-900/80 border-b border-slate-800 px-4 md:px-8 py-4 flex justify-between items-center">
+    <!-- 1. الشريط العلوي -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-slate-900/80 border-b border-slate-800 px-4 md:px-8 py-4 flex justify-between items-center">
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center font-black text-slate-950 text-xl shadow-lg shadow-emerald-500/20">
                 🇩🇿
@@ -27,14 +26,12 @@
             </div>
         </div>
 
-        <div class="flex items-center gap-3 md:gap-4">
+        <div class="flex items-center gap-3">
             <span class="hidden md:inline-block px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                السنة الثالثة ثانوي (BAC) — علوم تجريبية
+                السنة 3 ثانوي (BAC)
             </span>
             <div class="flex items-center gap-2 bg-slate-800 p-1.5 rounded-full border border-slate-700">
-                <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-slate-950 font-bold text-sm">
-                    أ
-                </div>
+                <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-slate-950 font-bold text-sm">أ</div>
                 <span class="text-xs font-medium pl-3 pr-1 text-slate-300">أمين طالب</span>
             </div>
         </div>
@@ -43,146 +40,126 @@
     <!-- 2. محتوى لوحة التحكم -->
     <main class="max-w-7xl mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 mt-4">
         
-        <!-- العمود الرئيسي: المناهج والدروس (8 أعمود) -->
         <div class="lg:col-span-8 space-y-6">
-            
-            <!-- بطاقة الترحيب والتقدم العام -->
+            <!-- بطاقة الترحيب -->
             <div class="bg-gradient-to-br from-slate-900 to-slate-900/50 p-6 rounded-2xl border border-slate-800 relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="flex justify-between items-start mb-4">
                     <div>
-                        <h2 class="text-xl font-bold text-white">مرحباً بك في رحلة التفوق والتميّز 🚀</h2>
-                        <p class="text-xs md:text-sm text-slate-400 mt-1">تجهّز لشهادة البكالوريا والتعليم المتوسط مع أحدث المناهج التفاعلية.</p>
-                    </div>
-                    <span class="px-3 py-1 rounded-lg bg-teal-500/10 text-teal-300 text-xs font-mono border border-teal-500/20">
-                        معدل الإنجاز: 68%
-                    </span>
-                </div>
-                
-                <!-- شريط التقدم -->
-                <div class="space-y-2">
-                    <div class="flex justify-between text-xs text-slate-400">
-                        <span>البرنامج الوزاري المنجز</span>
-                        <span class="text-emerald-400 font-bold">68%</span>
-                    </div>
-                    <div class="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden p-0.5 border border-slate-700/50">
-                        <div class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full" style="width: 68%"></div>
+                        <h2 class="text-xl font-bold text-white">مرحباً بك في رحلة التفوق 🚀</h2>
+                        <p class="text-xs md:text-sm text-slate-400 mt-1">اختر المادة للبدء في دراسة الوحدات والدروس المباشرة.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- قائمة المواد الأساسية حسب المنهج الوزاري -->
+            <!-- قائمة المواد التفاعلية -->
             <div>
                 <h3 class="text-lg font-bold text-slate-200 mb-4 flex items-center gap-2">
                     <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-                    المواد الأساسية (حسب المعاملات الرسمية)
+                    المواد الدراسية (اضغط لفتح الدروس)
                 </h3>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <!-- العلوم الطبيعية -->
-                    <div class="group bg-slate-900 hover:bg-slate-800/80 p-5 rounded-2xl border border-slate-800 hover:border-emerald-500/50 transition duration-300 cursor-pointer">
+                    
+                    <!-- بطاقة العلوم الطبيعية -->
+                    <div onclick="openSubject('sciences')" class="group bg-slate-900 hover:bg-slate-800 p-5 rounded-2xl border border-slate-800 hover:border-emerald-500/50 transition cursor-pointer">
                         <div class="flex justify-between items-start mb-4">
                             <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center text-2xl">🧬</div>
                             <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full border border-slate-700">المعامل: 6</span>
                         </div>
                         <h4 class="font-bold text-lg text-slate-100 group-hover:text-emerald-400 transition">علوم الطبيعة والحياة</h4>
                         <p class="text-xs text-slate-400 mt-1">المجال 1: التخصص الوظيفي للبروتينات</p>
-                        <div class="mt-4 pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-slate-400">
+                        <div class="mt-4 pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-emerald-400 font-bold">
                             <span>12 درس تفاعلي</span>
-                            <span class="text-emerald-400 font-medium">دخول المادة ←</span>
+                            <span>عرض الدروس ←</span>
                         </div>
                     </div>
 
-                    <!-- الفيزياء -->
-                    <div class="group bg-slate-900 hover:bg-slate-800/80 p-5 rounded-2xl border border-slate-800 hover:border-teal-500/50 transition duration-300 cursor-pointer">
+                    <!-- بطاقة العلوم الفيزيائية -->
+                    <div onclick="openSubject('physics')" class="group bg-slate-900 hover:bg-slate-800 p-5 rounded-2xl border border-slate-800 hover:border-teal-500/50 transition cursor-pointer">
                         <div class="flex justify-between items-start mb-4">
                             <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-400 border border-teal-500/20 flex items-center justify-center text-2xl">⚡</div>
                             <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full border border-slate-700">المعامل: 5</span>
                         </div>
                         <h4 class="font-bold text-lg text-slate-100 group-hover:text-teal-400 transition">العلوم الفيزيائية</h4>
                         <p class="text-xs text-slate-400 mt-1">الوحدة 1: المتابعة الزمنية لتحول كيميائي</p>
-                        <div class="mt-4 pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-slate-400">
+                        <div class="mt-4 pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-teal-400 font-bold">
                             <span>15 محاكاة + تمارين</span>
-                            <span class="text-teal-400 font-medium">دخول المادة ←</span>
+                            <span>عرض الدروس ←</span>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- قسم بنك المواضيع المباشر -->
-            <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-4">
-                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                    <h3 class="font-bold text-emerald-400 text-md flex items-center gap-2">
-                        <span>📂</span> بنك مواضيع BAC و BEM (المزامنة مع Supabase)
-                    </h3>
-                    <span id="db-status" class="text-xs px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                        جاري الاتصال...
-                    </span>
                 </div>
-                <div id="exams-list" class="space-y-3 text-xs text-slate-400">
-                    <p class="text-center py-4">جاري تحميل المواضيع النموذجية من قاعدة البيانات...</p>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- العمود الجانبي: المساعد الذكي -->
-        <div class="lg:col-span-4 space-y-6">
-            <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
-                    <h3 class="font-bold text-slate-200 text-sm">المساعد البيدغوجي الذكي (AI)</h3>
-                </div>
-                <p class="text-xs text-slate-400 mb-4 leading-relaxed">
-                    اطرح أي سؤال في المنهج وسيتم توجيهك وفق منهجية التصحيح الوزاري الرسمية.
-                </p>
-                <div class="space-y-2">
-                    <input id="ai-input" type="text" placeholder="كيف أصيغ فرضية في مادة العلوم؟" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition">
-                    <button onclick="askAI()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2 rounded-xl text-xs transition">
-                        طرح السؤال على الذكاء الاصطناعي
-                    </button>
-                </div>
-                <div id="ai-response" class="hidden mt-4 p-3 bg-slate-950 rounded-xl border border-slate-800 text-xs text-emerald-300 leading-relaxed"></div>
             </div>
         </div>
 
+        <!-- المساعد الذكي -->
+        <div class="lg:col-span-4">
+            <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 sticky top-24">
+                <h3 class="font-bold text-slate-200 text-sm mb-2">🤖 المساعد البيدغوجي</h3>
+                <p class="text-xs text-slate-400 mb-4">اضغط على أي مادة لعرض الدروس والملخصات مباشرة.</p>
+            </div>
+        </div>
     </main>
 
-    <!-- سكربت المحاكاة والتفاعل -->
+    <!-- 3. نافذة عرض الدروس (Modal) -->
+    <div id="lessons-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 w-full max-w-2xl rounded-2xl p-6 relative max-h-[85vh] overflow-y-auto">
+            <button onclick="closeModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
+            <h3 id="modal-title" class="text-xl font-bold text-emerald-400 mb-2"></h3>
+            <p id="modal-desc" class="text-xs text-slate-400 mb-6"></p>
+            
+            <div id="lessons-list" class="space-y-3">
+                <!-- يتم تعبئة الدروس عبر JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- السكربت التفاعلي -->
     <script>
-        // إشارة محاكاة الاتصال بقاعدة البيانات
-        setTimeout(() => {
-            const status = document.getElementById('db-status');
-            const list = document.getElementById('exams-list');
-            
-            status.className = "text-xs px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
-            status.innerText = "متصل بـ Supabase ✓";
+        const lessonsData = {
+            sciences: {
+                title: "🧬 علوم الطبيعة والحياة — دروس BAC",
+                desc: "المجال الأول: التخصص الوظيفي للبروتينات وفق المنهج الوزاري",
+                items: [
+                    { title: "الدرس 01: آليات تركيب البروتين (الاستنساخ والترجمة)", type: "شرح مفصل + رسومات تخطيطية", duration: "45 دقيقة" },
+                    { title: "الدرس 02: العلاقة بين بنية ووظيفة البروتين", type: "ملخص شروحات + تمارين محلولة", duration: "30 دقيقة" },
+                    { title: "الدرس 03: النشاط الإنزيمي للبروتينات والعوامل المؤثرة", type: "تجارب واختبارات قياسية", duration: "50 دقيقة" },
+                    { title: "الدرس 04: دور البروتينات في الدفاع عن الذات (المناعة)", type: "منهجية الإجابة الوزارية", duration: "60 دقيقة" }
+                ]
+            },
+            physics: {
+                title: "⚡ العلوم الفيزيائية — دروس BAC",
+                desc: "الوحدة الأولى: المتابعة الزمنية لتحول كيميائي في وسط مائي",
+                items: [
+                    { title: "الدرس 01: طرق المتابعة الزمنية (عن طريق قياس الناقلية وضغط الغاز)", type: "قوانين + امثلة تطبيقية", duration: "40 دقيقة" },
+                    { title: "الدرس 02: سرعة التفاعل وسرعة الاختفاء والتأكل", type: "تمارين استخراج السرعة بيانيا", duration: "35 دقيقة" },
+                    { title: "الدرس 03: زمن نصف التفاعل t1/2 وعوامل السرعة الكيميائية", type: "منهجية حصرية للبكالوريا", duration: "45 دقيقة" }
+                ]
+            }
+        };
 
-            list.innerHTML = `
-                <div class="flex justify-between items-center p-3 bg-slate-950 rounded-xl border border-slate-800/80 hover:border-emerald-500/30 transition">
-                    <div>
-                        <p class="font-bold text-slate-200">موضوع العلوم الطبيعية — بكالوريا تجريبية 2026</p>
-                        <p class="text-[10px] text-slate-500 mt-0.5">الشعبة: علوم تجريبية | التصحيح النموذج الوزاري مرفق</p>
-                    </div>
-                    <button class="bg-emerald-500/10 text-emerald-400 px-3 py-1.5 rounded-lg border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition font-semibold">تحميل PDF</button>
-                </div>
-                <div class="flex justify-between items-center p-3 bg-slate-950 rounded-xl border border-slate-800/80 hover:border-teal-500/30 transition">
-                    <div>
-                        <p class="font-bold text-slate-200">موضوع الفيزياء — BEM شهادة التعليم المتوسط</p>
-                        <p class="text-[10px] text-slate-500 mt-0.5">شامل لجميع الميادين المعتمدة | سلم التنقيط 20/20</p>
-                    </div>
-                    <button class="bg-teal-500/10 text-teal-400 px-3 py-1.5 rounded-lg border border-teal-500/30 hover:bg-teal-500 hover:text-slate-950 transition font-semibold">تحميل PDF</button>
-                </div>
-            `;
-        }, 1200);
-
-        function askAI() {
-            const input = document.getElementById('ai-input');
-            const res = document.getElementById('ai-response');
-            if(!input.value.trim()) return;
+        function openSubject(key) {
+            const data = lessonsData[key];
+            if (!data) return;
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-desc').innerText = data.desc;
             
-            res.classList.remove('hidden');
-            res.innerHTML = "💡 <b>إجابة المساعد البيدغوجي:</b> لصياغة فرضية علمية دقيقة في مادة العلوم الطبيعية، ابدأ بعبارة: <i>'نفرض أن...'</i> وربطها بالآلية المعنية مع تقديم تعليل منطقي يعتمد على المكتسبات القبلية وسياق التمرين.";
+            const list = document.getElementById('lessons-list');
+            list.innerHTML = data.items.map(item => `
+                <div class="p-4 bg-slate-950 rounded-xl border border-slate-800 hover:border-emerald-500/40 transition flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold text-sm text-slate-100">${item.title}</h4>
+                        <span class="text-[11px] text-slate-400 mt-1 block">${item.type} • ⏱️ ${item.duration}</span>
+                    </div>
+                    <button class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-3 py-1.5 rounded-lg text-xs font-bold transition">بدء الدرس</button>
+                </div>
+            `).join('');
+
+            document.getElementById('lessons-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('lessons-modal').classList.add('hidden');
         }
     </script>
 </body>
