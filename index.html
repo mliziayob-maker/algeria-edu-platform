@@ -2,17 +2,19 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة التميّز التعليمية الجزائرية 🇩🇿 | النسخة الشاملة v1.5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>منصة التميّز التعليمية الجزائرية 🇩🇿 | النسخة المختبرة v1.6</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     
-    <!-- مكتبة KaTeX لكتابة المعادلات الرياضية والكيميائية -->
+    <!-- مكتبة KaTeX لكتابة المعادلا والرموز العلمية -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
 
     <style>
         body { font-family: 'Tajawal', sans-serif; }
+        /* دعم الشاشات والتكيف مع لوحة مفاتيح الهواتف الذكية */
+        .full-mobile-height { height: 100vh; height: 100dvh; }
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
@@ -21,9 +23,9 @@
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-emerald-500 selection:text-slate-950 pb-12 custom-scrollbar">
 
-    <!-- تنبيه انقطاع الاتصال (Offline Indicator) -->
+    <!-- تنبيه انقطاع الاتصال -->
     <div id="offline-banner" class="hidden bg-amber-500 text-slate-950 text-xs font-bold text-center py-2 px-4 sticky top-0 z-50 shadow-md">
-        ⚠️ أنت غير متصل بالإنترنت حالياً. يمكنك تصفح الدروس المحفوظة، وسيعود المعلم الذكي للعمل فور استعادة الاتصال.
+        ⚠️ أنت غير متصل بالإنترنت حالياً. تم حفظ دراستك محلياً، وسيتواصل الشرح فور عودة الاتصال.
     </div>
 
     <!-- 1. الشريط العلوي Header -->
@@ -36,7 +38,7 @@
                 <h1 class="text-xl font-black bg-gradient-to-r from-emerald-400 via-teal-200 to-cyan-400 bg-clip-text text-transparent">
                     منصة التميّز التعليمية
                 </h1>
-                <p class="text-xs text-slate-400 hidden sm:block">بنك الدروس والتمارين التفاعلية (v1.5 Final Tested)</p>
+                <p class="text-xs text-slate-400 hidden sm:block">بنك الدروس والتمارين التفاعلية (النسخة v1.6)</p>
             </div>
         </div>
 
@@ -48,7 +50,7 @@
                     <option value="sec1">السنة 1 ثانوي</option>
                 </optgroup>
                 <optgroup label="📚 الطور المتوسط">
-                    <option value="bem">السنة 4 متوسط (شهادة التعليم المتوسط BEM)</option>
+                    <option value="bem">السنة 4 متوسط (شهادة BEM)</option>
                     <option value="mid3">السنة 3 متوسط</option>
                     <option value="mid2">السنة 2 متوسط</option>
                     <option value="mid1">السنة 1 متوسط</option>
@@ -67,11 +69,11 @@
                 <div class="absolute -left-10 -top-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="relative z-10">
                     <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-3">
-                        🛡️ منصة معتمدة ومجربة تقنياً وتربوياً
+                        🛡️ منصة جاهزة للموسم الدراسي
                     </span>
                     <h2 id="welcome-title" class="text-2xl font-black text-white">اختر المادة وابدأ مع معلمك الذكي 🤖🎓</h2>
                     <p class="text-xs md:text-sm text-slate-400 mt-2 leading-relaxed">
-                        تتضمن الأكاديمية دروساً مفصلة، ملخصات مركزة، وتمارين محلولة خطوة بخطوة مع أستاذك الافتراضي التفاعلي.
+                        تتضمن الأكاديمية دروساً مفصلة، ملخصات مركزة، وتمارين محلولة خطوة بخطوة وفق المنهج الوزاري الجزائري.
                     </p>
                 </div>
             </div>
@@ -88,20 +90,17 @@
         <div class="lg:col-span-4 space-y-5">
             <div class="bg-slate-900 p-5 rounded-3xl border border-slate-800 shadow-xl space-y-4">
                 <h3 class="font-bold text-slate-200 text-sm flex items-center gap-2">
-                    <span>⚙️</span> جاهزية المنصة والتدقيق
+                    <span>📊</span> ملخص نتائج الجولة الثانية من الاختبار
                 </h3>
                 <ul class="text-xs text-slate-400 space-y-2.5">
                     <li class="flex items-center gap-2 text-emerald-400">
-                        <span>✓</span> معالجة الثغرات والتشفير (XSS Safe).
+                        <span>✓</span> معالجة استجابة الواجهة للشاشات الصغيرة.
                     </li>
                     <li class="flex items-center gap-2 text-emerald-400">
-                        <span>✓</span> دعم الرموز والمعادلات الرياضية (KaTeX).
+                        <span>✓</span> تأمين معالجة النصوص الطويلة والإلصاق.
                     </li>
                     <li class="flex items-center gap-2 text-emerald-400">
-                        <span>✓</span> معالجة انقطاع الشبكة (Offline Mode).
-                    </li>
-                    <li class="flex items-center gap-2 text-emerald-400">
-                        <span>✓</span> حفظ وتخزين الجلسات ديناميكياً.
+                        <span>✓</span> حماية التخزين المحلي من الانهيار (Safe Storage).
                     </li>
                 </ul>
             </div>
@@ -118,7 +117,7 @@
     </div>
 
     <!-- 4. قاعة الحصة التفاعلية المباشرة Teacher Chat Modal -->
-    <div id="teacher-modal" class="fixed inset-0 bg-slate-950 z-50 hidden flex flex-col">
+    <div id="teacher-modal" class="fixed inset-0 bg-slate-950 z-50 hidden flex flex-col full-mobile-height">
         <div class="bg-slate-900 border-b border-slate-800 px-6 py-4 flex justify-between items-center shadow-md">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-2xl">👨‍🏫</div>
@@ -135,7 +134,7 @@
 
         <div id="chat-box" class="flex-1 p-4 md:p-6 overflow-y-auto space-y-4 max-w-4xl mx-auto w-full custom-scrollbar"></div>
 
-        <div class="bg-slate-900 border-t border-slate-800 p-4 space-y-3">
+        <div class="bg-slate-900 border-t border-slate-800 p-4 space-y-3 sticky bottom-0">
             <div class="max-w-4xl mx-auto flex gap-2 overflow-x-auto pb-1 custom-scrollbar">
                 <button onclick="quickAction('أعد الشرح بطريقة أسهل ومبسطة')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3.5 py-2 rounded-xl border border-slate-700 whitespace-nowrap transition">🔄 تبسيط الشرح</button>
                 <button onclick="quickAction('اعطني تمريناً للتدرب الآن مع الشرح والحل')" class="bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 text-[11px] px-3.5 py-2 rounded-xl border border-emerald-500/30 whitespace-nowrap transition font-bold">📝 اعطني تمريناً تطبيقيّاً</button>
@@ -148,7 +147,7 @@
         </div>
     </div>
 
-    <!-- 5. المنطق البرمجي المكتمل والمطور Script -->
+    <!-- 5. البرمجة المحدثة بالكامل -->
     <script>
         const GEMINI_API_KEY = ""; 
         let database = {}; 
@@ -157,7 +156,6 @@
         let currentSubjectId = null;
         let currentLessonIndex = null;
 
-        // كاشف حالة الاتصال بالشبكة
         window.addEventListener('online', updateOnlineStatus);
         window.addEventListener('offline', updateOnlineStatus);
 
@@ -191,7 +189,7 @@
                                 title: "الدرس 01: آليات تركيب البروتين (الاستنساخ والترجمة)",
                                 desc: "مقر الاستنساخ، مراحل العملية، ودور إنزيم ARN بوليميراز.",
                                 teacherIntro: "مرحباً بك يا بطل البكالوريا! أنا الدكتور عقبة.",
-                                sampleEx: { q: "تمرين تطبيقي...", sol: "الحل..." }
+                                sampleEx: { q: "تمرين تطبيقي في تركيب البروتين...", sol: "الحل بالخطوات المنهجية..." }
                             }]
                         }]
                     }
@@ -268,10 +266,10 @@
             document.getElementById('teacher-topic').innerText = lesson.title;
 
             const chatBox = document.getElementById('chat-box');
+            const savedChat = safeStorageGet(getStorageKey());
 
-            const savedChat = getStorageKey();
-            if (localStorage.getItem(savedChat)) {
-                chatBox.innerHTML = localStorage.getItem(savedChat);
+            if (savedChat) {
+                chatBox.innerHTML = savedChat;
             } else {
                 chatBox.innerHTML = `
                     <div class="bg-slate-900 border border-slate-800 p-5 rounded-3xl max-w-2xl leading-relaxed shadow-lg">
@@ -290,18 +288,24 @@
             return `chat_history_${currentGradeKey}_${currentSubjectId}_${currentLessonIndex}`;
         }
 
+        function safeStorageGet(key) {
+            try { return localStorage.getItem(key); } catch(e) { return null; }
+        }
+
+        function safeStorageSet(key, val) {
+            try { localStorage.setItem(key, val); } catch(e) { console.warn("Storage restricted"); }
+        }
+
         function saveChatToStorage() {
             const chatBox = document.getElementById('chat-box');
             const tempBox = chatBox.cloneNode(true);
             const typing = tempBox.querySelector('#typing-indicator');
             if (typing) typing.remove();
-            
-            localStorage.setItem(getStorageKey(), tempBox.innerHTML);
+            safeStorageSet(getStorageKey(), tempBox.innerHTML);
         }
 
         function clearChatHistory() {
-            const key = getStorageKey();
-            localStorage.removeItem(key);
+            try { localStorage.removeItem(getStorageKey()); } catch(e) {}
             const subject = database[currentGradeKey].subjects.find(s => s.id === currentSubjectId);
             const lesson = subject.lessons[currentLessonIndex];
             
@@ -339,7 +343,7 @@
 
         async function sendStudentAnswer(customText = null) {
             const input = document.getElementById('student-input');
-            const text = customText || input.value.trim();
+            const text = (customText || input.value).trim();
             if(!text) return;
 
             const chatBox = document.getElementById('chat-box');
@@ -361,7 +365,7 @@
 
             if (GEMINI_API_KEY && GEMINI_API_KEY !== "") {
                 try {
-                    const systemPrompt = `أنت ${subject.teacher}، أستاذ متخصص في ${subject.name} للتعليم الجزائري. الدرس الحالي هو "${lesson.title}". وجه الطالب بنهج سقراطي تعليمي بدون إعطاء الحل المباشر فوراً، بل عبر تلميحات بالمنهجية الرسمية.`;
+                    const systemPrompt = `أنت ${subject.teacher}، أستاذ متخصص في ${subject.name} للتعليم الجزائري. وجه الطالب بالنهج التربوي المعتمد بدون إعطاء الحل المباشر.`;
                     
                     const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
                         method: 'POST',
@@ -380,12 +384,11 @@
                     removeTypingIndicator();
 
                     if (data.candidates && data.candidates[0].content.parts[0].text) {
-                        const aiReply = data.candidates[0].content.parts[0].text;
-                        renderTeacherReply(subject.teacher, aiReply);
+                        renderTeacherReply(subject.teacher, data.candidates[0].content.parts[0].text);
                         return;
                     }
                 } catch (error) {
-                    console.error("خطأ في الاتصال بالذكاء الاصطناعي:", error);
+                    console.error("AI Fetch Error:", error);
                 }
             }
 
@@ -419,23 +422,12 @@
             saveChatToStorage();
         }
 
-        function handleKeyPress(e) {
-            if(e.key === 'Enter') sendStudentAnswer();
-        }
-
-        function quickAction(text) {
-            sendStudentAnswer(text);
-        }
-
+        function handleKeyPress(e) { if(e.key === 'Enter') sendStudentAnswer(); }
+        function quickAction(text) { sendStudentAnswer(text); }
         function escapeHTML(str) {
-            return str.replace(/[&<>'"]/g, 
-                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
-            );
+            return str.replace(/[&<>'"]/g, tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag));
         }
-
-        function closeModal(id) {
-            document.getElementById(id).classList.add('hidden');
-        }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
 
         initApp();
     </script>
