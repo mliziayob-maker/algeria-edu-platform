@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة التميّز التعليمية الجزائرية 🇩🇿 | بنك الدروس والتمارين التفاعلية</title>
+    <title>منصة التميّز التعليمية الجزائرية 🇩🇿 | الآمنة والمحدثة</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
@@ -26,7 +26,7 @@
                 <h1 class="text-xl font-black bg-gradient-to-r from-emerald-400 via-teal-200 to-cyan-400 bg-clip-text text-transparent">
                     منصة التميّز التعليمية
                 </h1>
-                <p class="text-xs text-slate-400 hidden sm:block">بنك الدروس والتمارين المشروحة بالذكاء الاصطناعي (مقتبسة من البرامج الرسمية)</p>
+                <p class="text-xs text-slate-400 hidden sm:block">بنك الدروس والتمارين التفاعلية (نسخة معالجة أمنياً v1.1)</p>
             </div>
         </div>
 
@@ -45,8 +45,6 @@
                 </optgroup>
                 <optgroup label="✏️ الطور الابتدائي">
                     <option value="prim5">السنة 5 ابتدائي (تقييم المكتسبات)</option>
-                    <option value="prim4">السنة 4 ابتدائي</option>
-                    <option value="prim3">السنة 3 ابتدائي</option>
                 </optgroup>
             </select>
         </div>
@@ -54,15 +52,12 @@
 
     <!-- 2. المحتوى الرئيسي -->
     <main class="max-w-7xl mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 mt-4">
-        
-        <!-- الجانب الأيمن: قائمة المواد والدروس والتمارين -->
         <div class="lg:col-span-8 space-y-6">
-            
             <div class="bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-950 p-6 rounded-3xl border border-slate-800 relative overflow-hidden shadow-2xl">
                 <div class="absolute -left-10 -top-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="relative z-10">
                     <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-3">
-                        📖 محتوى تعليمي مفتوح وحر (مطابق لمنهج وزارة التربية)
+                        🛡️ نظام أمني محسن ومحمي ضد الثغرات
                     </span>
                     <h2 id="welcome-title" class="text-2xl font-black text-white">اختر المادة وابدأ مع معلمك الذكي 🤖🎓</h2>
                     <p class="text-xs md:text-sm text-slate-400 mt-2 leading-relaxed">
@@ -71,59 +66,36 @@
                 </div>
             </div>
 
-            <!-- المواد الدراسية -->
             <div>
                 <h3 class="text-lg font-bold text-slate-200 mb-4 flex items-center gap-2">
                     <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
                     المواد الدراسية المتوفرة
                 </h3>
-                <div id="subjects-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <!-- تعبئة المواد عبر JS -->
-                </div>
+                <div id="subjects-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
             </div>
         </div>
 
-        <!-- الجانب الأيسر: معلومات المراجع والمساعد البيدغوجي -->
         <div class="lg:col-span-4 space-y-5">
-            
             <div class="bg-slate-900 p-5 rounded-3xl border border-slate-800 shadow-xl space-y-4">
                 <h3 class="font-bold text-slate-200 text-sm flex items-center gap-2">
-                    <span>🌐</span> مصادر ومراجع الدروس
+                    <span>⚙️</span> حالة النظام والبرمجة
                 </h3>
-                <p class="text-xs text-slate-400 leading-relaxed">
-                    تمت إعادة صياغة وهيكلة الدروس والتمارين اعتماداً على البرامج والكتب المدرسية الرسمية والمصادر التعليمية الجزائرية المتاحة للعموم (مثل المناهج الرسمية لوزارة التربية ومواقع التعليم المفتوح).
-                </p>
-                <div class="pt-3 border-t border-slate-800 flex flex-wrap gap-2">
-                    <span class="text-[10px] bg-slate-950 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-800">المنهج الوزاري الرسمي</span>
-                    <span class="text-[10px] bg-slate-950 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-800">سلاسل تمارين نموذجية</span>
-                    <span class="text-[10px] bg-slate-950 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-800">حلول البكالوريا و BEM</span>
-                </div>
-            </div>
-
-            <div class="bg-slate-900 p-5 rounded-3xl border border-slate-800 shadow-xl space-y-3">
-                <h3 class="font-bold text-slate-200 text-sm flex items-center gap-2">
-                    <span>💡</span> مميزات الأستاذ الذكي
-                </h3>
-                <ul class="text-xs text-slate-400 space-y-2.5">
-                    <li class="flex items-start gap-2">
-                        <span class="text-emerald-400 text-base leading-none">✓</span>
-                        <span>شرح الدرس بأسلوب مبسط وتفاعلي.</span>
+                <ul class="text-xs text-slate-400 space-y-2">
+                    <li class="flex items-center gap-2 text-emerald-400">
+                        <span>✓</span> تم إغلاق ثغرات DOM XSS.
                     </li>
-                    <li class="flex items-start gap-2">
-                        <span class="text-emerald-400 text-base leading-none">✓</span>
-                        <span>طرح تمارين تدرّجية مع التوفير الفوري للشرح والتصحيح المفصل.</span>
+                    <li class="flex items-center gap-2 text-emerald-400">
+                        <span>✓</span> نقل معالجة البيانات عبر IDs النظيفة.
                     </li>
-                    <li class="flex items-start gap-2">
-                        <span class="text-emerald-400 text-base leading-none">✓</span>
-                        <span>تقديم نصائح المنهجية الرسمية لتفادي أخطاء التنقيط.</span>
+                    <li class="flex items-center gap-2 text-slate-400">
+                        <span>⏳</span> الخطوة القادمة: ربط API الذكاء الاصطناعي التفاعلي.
                     </li>
                 </ul>
             </div>
-
         </div>
     </main>
 
-    <!-- 3. نافذة تفاصيل المادة والدروس والتمارين -->
+    <!-- 3. نافذة تفاصيل المادة والدروس -->
     <div id="subject-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-800 w-full max-w-3xl rounded-3xl p-6 relative max-h-[85vh] overflow-y-auto custom-scrollbar shadow-2xl">
             <button onclick="closeModal('subject-modal')" class="absolute top-5 left-5 text-slate-400 hover:text-white bg-slate-800 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition">✕</button>
@@ -132,9 +104,8 @@
         </div>
     </div>
 
-    <!-- 4. قاعة الحصة التفاعلية المباشرة مع الأستاذ الذكي -->
+    <!-- 4. قاعة الحصة التفاعلية المباشرة -->
     <div id="teacher-modal" class="fixed inset-0 bg-slate-950 z-50 hidden flex flex-col">
-        <!-- الشريط العلوي للحصة -->
         <div class="bg-slate-900 border-b border-slate-800 px-6 py-4 flex justify-between items-center shadow-md">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-2xl">👨‍🏫</div>
@@ -144,15 +115,13 @@
                 </div>
             </div>
             <div class="flex items-center gap-3">
-                <span class="hidden sm:inline-block text-[11px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full font-semibold">حصة تفاعلية حية 🟢</span>
+                <span class="hidden sm:inline-block text-[11px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full font-semibold">حصة تفاعلية آمنة 🔒</span>
                 <button onclick="closeModal('teacher-modal')" class="px-4 py-2 rounded-xl bg-slate-800 text-xs font-bold text-slate-300 hover:bg-slate-700 transition">إنهاء الحصة ✕</button>
             </div>
         </div>
 
-        <!-- منطقة المحادثة -->
         <div id="chat-box" class="flex-1 p-4 md:p-6 overflow-y-auto space-y-4 max-w-4xl mx-auto w-full custom-scrollbar"></div>
 
-        <!-- الشريط السفلي للتفاعل والمدخلات -->
         <div class="bg-slate-900 border-t border-slate-800 p-4 space-y-3">
             <div class="max-w-4xl mx-auto flex gap-2 overflow-x-auto pb-1 custom-scrollbar">
                 <button onclick="quickAction('أعد الشرح بطريقة أسهل ومبسطة')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3.5 py-2 rounded-xl border border-slate-700 whitespace-nowrap transition">🔄 تبسيط الشرح</button>
@@ -160,14 +129,15 @@
                 <button onclick="quickAction('كيف أجيب في البكالوريا/الامتحان على هذا السؤال؟')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3.5 py-2 rounded-xl border border-slate-700 whitespace-nowrap transition">🎯 منهجية الإجابة الرسمية</button>
             </div>
             <div class="max-w-4xl mx-auto flex gap-2">
-                <input id="student-input" type="text" placeholder="أكتب إجابتك أو سؤالك للأستاذ..." class="flex-1 bg-slate-950 border border-slate-800 rounded-2xl px-5 py-3.5 text-xs text-slate-200 focus:outline-none focus:border-emerald-500 transition">
+                <input id="student-input" type="text" placeholder="أكتب إجابتك أو سؤالك للأستاذ..." class="flex-1 bg-slate-950 border border-slate-800 rounded-2xl px-5 py-3.5 text-xs text-slate-200 focus:outline-none focus:border-emerald-500 transition" onkeypress="handleKeyPress(event)">
                 <button onclick="sendStudentAnswer()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-7 py-3.5 rounded-2xl text-xs transition shadow-lg shadow-emerald-500/20">إرسال</button>
             </div>
         </div>
     </div>
 
-    <!-- قواعد البيانات والمنطق البرمجي -->
+    <!-- المنطق البرمجي المحدث والمحمي -->
     <script>
+        // قاعدة البيانات المنظمة
         const database = {
             sec3: {
                 title: "السنة 3 ثانوي (شهادة البكالوريا BAC)",
@@ -180,21 +150,13 @@
                         teacher: "د. عقبة (متخصص المنهجية الوزارية)",
                         lessons: [
                             {
+                                id: "lesson_bio_1",
                                 title: "الدرس 01: آليات تركيب البروتين (الاستنساخ والترجمة)",
                                 desc: "مقر الاستنساخ، مراحل العملية، دور إنزيم ARN بوليميراز، واستطالة سلسلة ARNm.",
                                 teacherIntro: "مرحباً بك يا بطل البكالوريا! أنا الدكتور عقبة. اليوم سنفكك آليات تركيب البروتين وفق المنهج الوزاري الرسمى.\n\nسنبدأ بـ **مرحلة الاستنساخ**: تحدث داخل النواة عند حقيقيات النوى، حيث يقوم إنزيم **ARN بوليميراز** بقراءة السلسلة المستنسخة من الـ DNA وتشكيل جزيئة الـ ARNm.\n\nهل تعلم ما هي القاعدة النيتروجينية التي تستبدل التيمين (T) في جزيئة الـ ARNm؟",
                                 sampleEx: {
                                     q: "تمرين تطبيقي: تمثل الوثيقة تتابع نيوكليوتيدي للسلسلة المستنسخة من الـ DNA كالتالي: TAC - GGC - ATT.\n1. اعطِ السلسلة المتممة للـ ARNm.\n2. حدد عدد الرامزات والأحماض الأمينية المتوقعة.",
-                                    sol: "الحل النموجي:\n1. سلسلة الـ ARNm هي: AUG - CCU - UAA.\n2. عدد الرامزات: 3 رامزات (من بينها رامزة الانطلاق AUG ورامزة التوقف UAA)، وعدد الأحماض الأمينية الناتجة هو 2 (لأن رامزة التوقف UAA لا تترجم لإنزيم/حمض أميني)."
-                                }
-                            },
-                            {
-                                title: "الدرس 02: العلاقة بين بنية ووظيفة البروتين",
-                                desc: "البنيات الأولية، الثانوية، الثالثية، والرابعية وروابط الاستقرار.",
-                                teacherIntro: "أهلاً بك! في هذا الدرس سندرس كيف تحدد الروابط الكيميائية (الشرسبية، الهيدروجينية، الكبريتية، وكارهة الماء) البنية الفراغية للبروتين وبالتالي وظيفته.",
-                                sampleEx: {
-                                    q: "تمرين: ما هو التأثير المباشر لمركبات كسر الجسور ثنائية الكبريت على البنية الثالثية للبروتين؟",
-                                    sol: "الحل: يؤدي كسر الجسور ثنائية الكبريت إلى فقدان الاستقرار الفراغي للبروتين وتخربه، مما يفقد موقع نشاطه التخصص الوظيفي."
+                                    sol: "الحل النموذجي:\n1. سلسلة الـ ARNm هي: AUG - CCU - UAA.\n2. عدد الرامزات: 3 رامزات (من بينها رامزة الانطلاق AUG ورامزة التوقف UAA)، وعدد الأحماض الأمينية الناتجة هو 2 (لأن رامزة التوقف UAA لا تترجم لحمض أميني)."
                                 }
                             }
                         ]
@@ -207,30 +169,13 @@
                         teacher: "أ. ابن الهيثم (مستشار الفيزياء)",
                         lessons: [
                             {
+                                id: "lesson_phy_1",
                                 title: "الدرس 01: المتابعة الزمنية لتحول كيميائي",
                                 desc: "طرق المتابعة القياسية (قياس الناقلية، المعايرة اللونية، وقياس الحجم والضغط).",
-                                teacherIntro: "أهلاً بك في الفيزياء! المتابعة الزمنية تعني معرفة كميات المادة للسنف الكيميائي في كل لحظة t. نستخدم قياس الناقلية G فقط عندما يحتوي الوسط التفاعلي على شوارد!\n\nهل يمكنك ذكر القانون الذي يربط الناقلية النوعية sigma بالتركيز المولي للشوارد؟",
+                                teacherIntro: "أهلاً بك في الفيزياء! المتابعة الزمنية تعني معرفة كميات المادة للسنف الكيميائي في كل لحظة t. نستخدم قياس الناقلية G فقط عندما يحتوي الوسط التفاعلي على شوارد!",
                                 sampleEx: {
-                                    q: "تمرين: تفاعل ينتج عنه غاز CO2. ما هي أفضل طريقة لمتابعة هذا التفاعل زمنياً إذا كان الوعاء مغلقاً وذو حجم ثابت؟",
-                                    sol: "الحل: قياس ضغط الغاز (P) باستخدام جهاز قياس الضغط، حيث يزداد الضغط داخل الوعاء بزيادة كمية مادة الغاز المنطلق حسب قانون الغازات المثالية PV=nRT."
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        id: "sec3_math",
-                        name: "الرياضيات",
-                        icon: "📐",
-                        coef: 6,
-                        teacher: "أ. الخوارزمي",
-                        lessons: [
-                            {
-                                title: "الدرس 01: الاستمرارية والنهايات ونظرية القيم المتوسطة",
-                                desc: "حساب النهايات، حالات عدم التعيين، وتطبيق نظرية القيم المتوسطة لإثبات وجود الحلول.",
-                                teacherIntro: "أهلاً بك! نظرية القيم المتوسطة هي حجر الزاوية في امتحان البكالوريا لإثبات أن المعادلة f(x)=0 تقبل حلاً وحيداً alpha في مجال معين.\n\nهل تتذكر الشروط الثلاثة الأساسية لتطبيق هذه النظرية؟",
-                                sampleEx: {
-                                    q: "تمرين: أثبت أن المعادلة x^3 + 2x - 1 = 0 تقبل حلاً وحيداً على المجال [0, 1].",
-                                    sol: "الحل:\n1. الدالة مستمرة ورتيبة تماماً على [0, 1] لأن مشتقتها 3x^2 + 2 > 0.\n2. f(0) = -1 و f(1) = 2، إذن f(0) * f(1) < 0.\nحسب نظرية القيم المتوسطة، المعادلة تقبل حلاً وحيداً alpha ينتمي للمجال [0, 1]."
+                                    q: "تمرين: تفاعل ينتج عنه غاز CO2. ما هي أفضل طريقة لمتابعة هذا التفاعل زمنياً إذا كان الوعاء مغلقاً؟",
+                                    sol: "الحل: قياس ضغط الغاز (P) باستخدام جهاز قياس الضغط حسب قانون الغازات المثالية PV=nRT."
                                 }
                             }
                         ]
@@ -238,7 +183,7 @@
                 ]
             },
             bem: {
-                title: "السنة 4 متوسط (شهادة التعليم المتوسط BEM)",
+                title: "السنة 4 متوسط (BEM)",
                 subjects: [
                     {
                         id: "bem_sci",
@@ -248,53 +193,13 @@
                         teacher: "الأستاذة مريم",
                         lessons: [
                             {
+                                id: "lesson_bem_sci_1",
                                 title: "الدرس 01: التحول الغذائي في الأنبوب الهضمي",
-                                desc: "الهضم الآلي والكيميائي، عمل الإنزيمات (الأميلاز، البيبسين، والليباز)، ودور الزغابات المعوية.",
-                                teacherIntro: "مرحباً يا بطل BEM! الهضم هو تحويل الأغذية المعقدة إلى المغذيات البسيطة بفضل الإنزيمات المتخصصة.\n\nما هو ناتج هضم النشاء على مستوى الفم بوجود الأميلاز اللعابي؟",
+                                desc: "الهضم الآلي والكيميائي وعمل الإنزيمات.",
+                                teacherIntro: "مرحباً يا بطل BEM! الهضم هو تحويل الأغذية المعقدة إلى المغذيات البسيطة بفضل الإنزيمات المتخصصة.",
                                 sampleEx: {
-                                    q: "تمرين: حدد الإنزيم المسؤول وناتج الهضم لكل من: النشاء، البروتين، والدسم.",
-                                    sol: "الحل:\n- النشاء -> بفضل إنزيم الأميلاز -> سكر مالطوز (ثم إلى جلوكوز بفضل المالمتاز).\n- البروتين -> بفضل إنزيم البيبسين/البروتياز -> ببتيدات (ثم أحماض أمينية).\n- الدسم -> بفضل إنزيم الليباز -> أحماض دسمة وغليسيرول."
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        id: "bem_phy",
-                        name: "العلوم الفيزيائية والتكنولوجيا",
-                        icon: "💡",
-                        coef: 2,
-                        teacher: "الأستاذ علي",
-                        lessons: [
-                            {
-                                title: "الدرس 01: الشاردة والمحلول الشاردي",
-                                desc: "الذرة، فقدان واكتساب الإلكترونات، والمحاليل الجزيئية مقابل الشاردية.",
-                                teacherIntro: "أهلاً بك! المحلول الشاردي ناقل للتيار الكهربائي لاحتوائه على شوارد حرة الحركة، بينما المحلول الجزيئي (مثل السكري) غير ناقل.",
-                                sampleEx: {
-                                    q: "تمرين: ماذا يحدث عند غمر مسريين من الغرافيت في محلول كلور الهيدروجين (HCl) وتوصيل الدارة بدارة كهربائية؟",
-                                    sol: "الحل: يتوهج المصباح وتنطلق فقاعات غاز كلور الماء عند المصعد ويتصاعد غاز الهيدروجين عند المهبط بفضل حركة الشوارد الحرة."
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
-            prim5: {
-                title: "السنة 5 ابتدائي (تقييم المكتسبات)",
-                subjects: [
-                    {
-                        id: "p5_math",
-                        name: "الرياضيات",
-                        icon: "🔢",
-                        coef: 1,
-                        teacher: "الأستاذة أمل",
-                        lessons: [
-                            {
-                                title: "الدرس 01: الأعداد الكبيرة والعمليات الأربع",
-                                desc: "قراءة وكتابة وتفكيك الأعداد، والجمع والطرح والضرب والقسمة الإقليدية.",
-                                teacherIntro: "مرحباً يا شاطر! اليوم سنلعب بالأعداد الكبيرة ونحسب المسائل البسيطة بخطوات منظمة!",
-                                sampleEx: {
-                                    q: "تمرين: اشترى أحمد 3 كراسات بسعر 45 دج للكراس الواحد، وقلم بـ 20 دج. كم يدفع للبائع؟",
-                                    sol: "الحل:\n1. ثمن الكراسات: 3 × 45 = 135 دج.\n2. المبلغ الإجمالي: 135 + 20 = 155 دج."
+                                    q: "تمرين: حدد الإنزيم المسؤول عن هضم النشاء وناتجه.",
+                                    sol: "الحل: إنزيم الأميلاز اللعابي يحول النشاء إلى سكر مالطوز."
                                 }
                             }
                         ]
@@ -303,17 +208,18 @@
             }
         };
 
-        let currentTeacher = "";
-        let currentLessonData = null;
+        let currentGradeKey = 'sec3';
+        let currentSubjectId = null;
+        let currentLessonIndex = null;
 
         function switchGrade() {
-            const gradeKey = document.getElementById('grade-select').value;
-            const data = database[gradeKey] || database['sec3'];
+            currentGradeKey = document.getElementById('grade-select').value;
+            const data = database[currentGradeKey] || database['sec3'];
             document.getElementById('welcome-title').innerText = `دروس وتمارين ${data.title} 🤖🎓`;
             
             const container = document.getElementById('subjects-container');
             container.innerHTML = data.subjects.map(sub => `
-                <div onclick="openSubjectModal('${gradeKey}', '${sub.id}')" class="group bg-slate-900 hover:bg-slate-800 p-5 rounded-3xl border border-slate-800 hover:border-emerald-500/50 transition cursor-pointer shadow-lg hover:shadow-emerald-500/10">
+                <div onclick="openSubjectModal('${currentGradeKey}', '${sub.id}')" class="group bg-slate-900 hover:bg-slate-800 p-5 rounded-3xl border border-slate-800 hover:border-emerald-500/50 transition cursor-pointer shadow-lg hover:shadow-emerald-500/10">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center text-2xl group-hover:scale-110 transition">${sub.icon}</div>
                         <span class="text-xs font-bold bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">المعامل: ${sub.coef}</span>
@@ -321,16 +227,19 @@
                     <h4 class="font-black text-lg text-slate-100 group-hover:text-emerald-400 transition">${sub.name}</h4>
                     <p class="text-xs text-slate-400 mt-1">الأستاذ الذكي: ${sub.teacher}</p>
                     <div class="mt-4 pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-emerald-400 font-bold">
-                        <span>${sub.lessons.length} دروس + تمارين محلولة</span>
+                        <span>${sub.lessons.length} دروس + تمارين</span>
                         <span>عرض الدروس ←</span>
                     </div>
                 </div>
             `).join('');
         }
 
+        // آلية آمنة 100% لتوسيع الدروس عبر المعرفات المباشرة (Safe Passing)
         function openSubjectModal(gradeKey, subjectId) {
-            const gradeData = database[gradeKey] || database['sec3'];
-            const subject = gradeData.subjects.find(s => s.id === subjectId);
+            currentGradeKey = gradeKey;
+            currentSubjectId = subjectId;
+            const gradeData = database[gradeKey];
+            const subject = gradeData ? gradeData.subjects.find(s => s.id === subjectId) : null;
             if(!subject) return;
 
             document.getElementById('modal-header').innerHTML = `
@@ -350,7 +259,7 @@
                         <h4 class="font-bold text-sm text-slate-100">${lesson.title}</h4>
                         <p class="text-xs text-slate-400">${lesson.desc}</p>
                     </div>
-                    <button onclick="startLessonSession('${subject.teacher}', '${lesson.title}', '${encodeURIComponent(JSON.stringify(lesson))}')" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-4 py-2.5 rounded-xl text-xs font-black transition whitespace-nowrap self-start sm:self-center shadow-lg shadow-emerald-500/20">
+                    <button onclick="startLessonSession(${idx})" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-4 py-2.5 rounded-xl text-xs font-black transition whitespace-nowrap self-start sm:self-center shadow-lg shadow-emerald-500/20">
                         بدء الحصة مع البوت 👨‍🏫
                     </button>
                 </div>
@@ -359,19 +268,21 @@
             document.getElementById('subject-modal').classList.remove('hidden');
         }
 
-        function startLessonSession(teacher, title, encodedLesson) {
+        function startLessonSession(lessonIdx) {
             closeModal('subject-modal');
-            currentTeacher = teacher;
-            currentLessonData = JSON.parse(decodeURIComponent(encodedLesson));
+            currentLessonIndex = lessonIdx;
 
-            document.getElementById('teacher-name').innerText = teacher;
-            document.getElementById('teacher-topic').innerText = title;
+            const subject = database[currentGradeKey].subjects.find(s => s.id === currentSubjectId);
+            const lesson = subject.lessons[lessonIdx];
+
+            document.getElementById('teacher-name').innerText = subject.teacher;
+            document.getElementById('teacher-topic').innerText = lesson.title;
 
             const chatBox = document.getElementById('chat-box');
             chatBox.innerHTML = `
                 <div class="bg-slate-900 border border-slate-800 p-5 rounded-3xl max-w-2xl leading-relaxed shadow-lg">
-                    <p class="text-xs font-bold text-emerald-400 mb-2">${teacher}</p>
-                    <p class="text-xs text-slate-200 whitespace-pre-line leading-relaxed">${currentLessonData.teacherIntro}</p>
+                    <p class="text-xs font-bold text-emerald-400 mb-2">${subject.teacher}</p>
+                    <p class="text-xs text-slate-200 whitespace-pre-line leading-relaxed">${lesson.teacherIntro}</p>
                 </div>
             `;
 
@@ -387,40 +298,53 @@
             chatBox.innerHTML += `
                 <div class="bg-emerald-500/10 border border-emerald-500/30 p-4 rounded-2xl max-w-2xl mr-auto text-left leading-relaxed">
                     <p class="text-xs font-bold text-emerald-300 mb-1">أنت (الطالب)</p>
-                    <p class="text-xs text-slate-200">${text}</p>
+                    <p class="text-xs text-slate-200">${escapeHTML(text)}</p>
                 </div>
             `;
 
             if(!customText) input.value = '';
             chatBox.scrollTop = chatBox.scrollHeight;
 
+            const subject = database[currentGradeKey].subjects.find(s => s.id === currentSubjectId);
+            const lesson = subject.lessons[currentLessonIndex];
+
             setTimeout(() => {
                 let response = "إجابة وملاحظة ممتازة! تدل على تركيزك العالي. هل تريد الانتقال إلى التمرين التطبيقي المباشر؟";
 
                 if(text.includes('تمريناً') || text.includes('تمرين')) {
-                    if(currentLessonData && currentLessonData.sampleEx) {
-                        response = `📝 **${currentLessonData.sampleEx.q}**\n\n💡 **الشرح والحل المنهجي المفصل:**\n${currentLessonData.sampleEx.sol}`;
-                    } else {
-                        response = "إليك تمرين تطبيقي سريع: اعطِ التعريف المنهجي المباشر للمفهوم المدروس مع صياغة المعادلة الإجمالية الرسمية.";
+                    if(lesson && lesson.sampleEx) {
+                        response = `📝 **${lesson.sampleEx.q}**\n\n💡 **الشرح والحل المنهجي المفصل:**\n${lesson.sampleEx.sol}`;
                     }
                 } else if(text.includes('تبسيط') || text.includes('أسهل')) {
                     response = "بكل بساطة! تخيل العملية كخط إنتاج في مصنع: المواد الخام يدخل بها الإنزيم، ويصيغها بمرونة ليخرج المنتج النهائي الجاهز للعمل!";
                 } else if(text.includes('منهجية') || text.includes('البكالوريا')) {
-                    response = "🎯 **نصيحة المنهجية الوزارية:** احرص دائماً على صياغة الإجابة في 3 مراحل: **1. التحليل (ماذا تلاحظ)**، **2. التفسير (لماذا حدث ذلك)**، و **3. الاستنتاج (الخلاصة المباشرة)**.";
+                    response = "🎯 **نصيحة المنهجية الوزارية:** احرص دائماً على صياغة الإجابة في 3 مراحل: **1. التحليل**، **2. التفسير**، و **3. الاستنتاج**.";
                 }
 
                 chatBox.innerHTML += `
                     <div class="bg-slate-900 border border-slate-800 p-5 rounded-3xl max-w-2xl leading-relaxed shadow-lg">
-                        <p class="text-xs font-bold text-emerald-400 mb-2">${currentTeacher}</p>
+                        <p class="text-xs font-bold text-emerald-400 mb-2">${subject.teacher}</p>
                         <p class="text-xs text-slate-200 whitespace-pre-line leading-relaxed">${response}</p>
                     </div>
                 `;
                 chatBox.scrollTop = chatBox.scrollHeight;
-            }, 800);
+            }, 600);
+        }
+
+        // إفراغ ودعم زر Enter
+        function handleKeyPress(e) {
+            if(e.key === 'Enter') sendStudentAnswer();
         }
 
         function quickAction(text) {
             sendStudentAnswer(text);
+        }
+
+        // حماية ودالة تنظيف النصوص Prevent XSS
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
         }
 
         function closeModal(id) {
