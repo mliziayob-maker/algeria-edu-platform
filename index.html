@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>منصة التميّز التعليمية الجزائرية 🇩🇿 | النسخة المختبرة v1.6</title>
+    <title>أكاديمية أمين الإلكترونية 🇩🇿 | النسخة المتكاملة v1.6</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     
-    <!-- مكتبة KaTeX لكتابة المعادلا والرموز العلمية -->
+    <!-- مكتبة KaTeX لكتابة المعادلات والرموز العلمية -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
 
     <style>
         body { font-family: 'Tajawal', sans-serif; }
-        /* دعم الشاشات والتكيف مع لوحة مفاتيح الهواتف الذكية */
         .full-mobile-height { height: 100vh; height: 100dvh; }
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; }
@@ -32,13 +31,13 @@
     <header class="sticky top-0 z-40 backdrop-blur-md bg-slate-900/90 border-b border-slate-800 px-4 md:px-8 py-4 flex justify-between items-center shadow-lg">
         <div class="flex items-center gap-3">
             <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-cyan-500 flex items-center justify-center font-black text-slate-950 text-2xl shadow-lg shadow-emerald-500/20">
-                🇩🇿
+                🎓
             </div>
             <div>
                 <h1 class="text-xl font-black bg-gradient-to-r from-emerald-400 via-teal-200 to-cyan-400 bg-clip-text text-transparent">
-                    منصة التميّز التعليمية
+                    أكاديمية أمين الإلكترونية
                 </h1>
-                <p class="text-xs text-slate-400 hidden sm:block">بنك الدروس والتمارين التفاعلية (النسخة v1.6)</p>
+                <p class="text-xs text-slate-400 hidden sm:block">منصة التعليم التفاعلي الموحدة (النسخة المتكاملة v1.6)</p>
             </div>
         </div>
 
@@ -52,11 +51,6 @@
                 <optgroup label="📚 الطور المتوسط">
                     <option value="bem">السنة 4 متوسط (شهادة BEM)</option>
                     <option value="mid3">السنة 3 متوسط</option>
-                    <option value="mid2">السنة 2 متوسط</option>
-                    <option value="mid1">السنة 1 متوسط</option>
-                </optgroup>
-                <optgroup label="✏️ الطور الابتدائي">
-                    <option value="prim5">السنة 5 ابتدائي (تقييم المكتسبات)</option>
                 </optgroup>
             </select>
         </div>
@@ -69,7 +63,7 @@
                 <div class="absolute -left-10 -top-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="relative z-10">
                     <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-3">
-                        🛡️ منصة جاهزة للموسم الدراسي
+                        ⚡ بيانات مدمجة وجاهزة للعمل المباشر
                     </span>
                     <h2 id="welcome-title" class="text-2xl font-black text-white">اختر المادة وابدأ مع معلمك الذكي 🤖🎓</h2>
                     <p class="text-xs md:text-sm text-slate-400 mt-2 leading-relaxed">
@@ -90,17 +84,17 @@
         <div class="lg:col-span-4 space-y-5">
             <div class="bg-slate-900 p-5 rounded-3xl border border-slate-800 shadow-xl space-y-4">
                 <h3 class="font-bold text-slate-200 text-sm flex items-center gap-2">
-                    <span>📊</span> ملخص نتائج الجولة الثانية من الاختبار
+                    <span>💡</span> مميزات النسخة المدمجة
                 </h3>
                 <ul class="text-xs text-slate-400 space-y-2.5">
                     <li class="flex items-center gap-2 text-emerald-400">
-                        <span>✓</span> معالجة استجابة الواجهة للشاشات الصغيرة.
+                        <span>✓</span> تعمل فوراً بمجرد فتح الملف بالنقر المزدوج.
                     </li>
                     <li class="flex items-center gap-2 text-emerald-400">
-                        <span>✓</span> تأمين معالجة النصوص الطويلة والإلصاق.
+                        <span>✓</span> تضمن تحميل كل الأساتذة (البوتات) والدروس.
                     </li>
                     <li class="flex items-center gap-2 text-emerald-400">
-                        <span>✓</span> حماية التخزين المحلي من الانهيار (Safe Storage).
+                        <span>✓</span> استجابة فورية وحفظ التفاعل محلياً.
                     </li>
                 </ul>
             </div>
@@ -147,10 +141,109 @@
         </div>
     </div>
 
-    <!-- 5. البرمجة المحدثة بالكامل -->
+    <!-- 5. منطق التشغيل المدمج بالكامل -->
     <script>
         const GEMINI_API_KEY = ""; 
-        let database = {}; 
+
+        // قاعدة البيانات المدمجة مباشرةً لضمان العمل بدون سيرفر
+        const database = {
+            sec3: {
+                title: "السنة 3 ثانوي (شهادة البكالوريا BAC)",
+                subjects: [
+                    {
+                        id: "sec3_bio",
+                        name: "علوم الطبيعة والحياة",
+                        icon: "🧬",
+                        coef: 6,
+                        teacher: "د. عقبة (متخصص المنهجية الوزارية)",
+                        lessons: [
+                            {
+                                id: "lesson_bio_1",
+                                title: "الدرس 01: آليات تركيب البروتين (الاستنساخ والترجمة)",
+                                desc: "مقر الاستنساخ، مراحل العملية، ودور إنزيم ARN بوليميراز.",
+                                teacherIntro: "مرحباً بك يا بطل البكالوريا! أنا الدكتور عقبة. سنراجع اليوم آليات تركيب البروتين. ما المفهوم الذي تود البدء به؟",
+                                sampleEx: {
+                                    q: "تمرين: ما هو الدور الرئيسي لإنزيم ARN بوليميراز في عملية الاستنساخ؟",
+                                    sol: "💡 الحل المنهجي:\n1. التثبت على منطقة بداية الجين.\n2. فتح شريطي الـ ADN عن طريق كسر الروابط الهيدروجينية.\n3. قراءة التتابع النيوكليوتيدي وبناء سلسلة ARNm متممة."
+                                }
+                            },
+                            {
+                                id: "lesson_bio_2",
+                                title: "الدرس 02: العلاقة بين بنية ووظيفة البروتين",
+                                desc: "المستويات البنائية للبروتينات والروابط المساهمة في استقرارها.",
+                                teacherIntro: "أهلاً بك! في هذا الدرس سنكتشف كيف تحدد البنية الفراغية التخصص الوظيفي للبروتين.",
+                                sampleEx: {
+                                    q: "تمرين: قارن بين البنية الثانوية والبنية الثالثية للبروتين.",
+                                    sol: "💡 الحل المنهجي:\nالبنية الثانوية تشمل السلاسل الحلزونية α أو الصفائح β المحافظ عليها بواسطة روابط هيدروجينية، بينما البنية الثالثية تنشأ من انطواء السلسلة الثانوية وتثبتها روابط إضافية (كبوصلات كبريتية وشاردية)."
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        id: "sec3_math",
+                        name: "الرياضيات",
+                        icon: "📐",
+                        coef: 7,
+                        teacher: "أ. نور الدين (خبير الرياضيات)",
+                        lessons: [
+                            {
+                                id: "lesson_math_1",
+                                title: "الدرس 01: الدوال العددية والنهايات",
+                                desc: "حساب النهايات، حالات عدم التعيين، والاستمرارية.",
+                                teacherIntro: "أهلاً بك! أنا الأستاذ نور الدين. جاهز لتبسيط النهايات وإزالة حالات عدم التعيين؟",
+                                sampleEx: {
+                                    q: "تمرين: احسب نهاية الدالة f(x) = (x^2 - 4) / (x - 2) عندما يؤول x إلى 2.",
+                                    sol: "💡 الحل:\nنلاحظ وجود حالة عدم تعيين (0/0).\nنقوم بتحليل البسط: (x - 2)(x + 2) / (x - 2)\nنختزل (x - 2) فتصبح الدالة (x + 2).\nبالتعويض بـ 2: النهاية تساوي 4."
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        id: "sec3_phy",
+                        name: "العلوم الفيزيائية",
+                        icon: "⚡",
+                        coef: 6,
+                        teacher: "أ. أمين (أخصائي الفيزياء)",
+                        lessons: [
+                            {
+                                id: "lesson_phy_1",
+                                title: "الدرس 01: المتابعة الزمنية لتحول كيميائي",
+                                desc: "طرق المتابعة الزمنية، سرعة التفاعل، وزمن نصف التفاعل t1/2.",
+                                teacherIntro: "مرحباً بك! معكم الأستاذ أمين. سندرس اليوم التفاعلات السريعة والبطيئة وكيفية قياس تقدم التفاعل.",
+                                sampleEx: {
+                                    q: "تمرين: عرّف زمن نصف التفاعل t1/2 وبيّن أهميته.",
+                                    sol: "💡 الحل المنهجي:\nهو الزمن اللازم لبلوغ التفاعل نصف تقدمه النهائي (Xmax/2). أهميته تكمن في تقدير المدة الزمنية اللازمة لاكتمال التفاعل والمقارنة بين سرعة التفاعلات."
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            bem: {
+                title: "السنة 4 متوسط (شهادة BEM)",
+                subjects: [
+                    {
+                        id: "bem_phys",
+                        name: "العلوم الفيزيائية والتكنولوجيا",
+                        icon: "🧲",
+                        coef: 2,
+                        teacher: "أ. الأستاذ الذكي للتعليم المتوسط",
+                        lessons: [
+                            {
+                                id: "lesson_bem_1",
+                                title: "الدرس 01: الظواهر الكهربائية (التكهرب والشحنة)",
+                                desc: "طرق التكهرب، نموذج الذرة، وتفسير النواقل والعوازل.",
+                                teacherIntro: "مرحباً بطل المتوسط! أنا هنا لمساعدتك في فهم الشحنات الكهربائية وتجارب التكهرب.",
+                                sampleEx: {
+                                    q: "تمرين: فسّر تكهرب قضيب إيبونيت عند حكه بالصوف.",
+                                    sol: "💡 الحل:\nعند حك الإيبونيت بالصوف، يكتسب إلكترونات من الصوف فتصبح شحنته الكلية سالبة."
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        };
 
         let currentGradeKey = 'sec3';
         let currentSubjectId = null;
@@ -168,33 +261,8 @@
             }
         }
 
-        async function initApp() {
+        function initApp() {
             updateOnlineStatus();
-            try {
-                const res = await fetch('data.json');
-                if(!res.ok) throw new Error("تعذر جلب ملف JSON");
-                database = await res.json();
-            } catch (err) {
-                database = {
-                    sec3: {
-                        title: "السنة 3 ثانوي (شهادة البكالوريا BAC)",
-                        subjects: [{
-                            id: "sec3_bio",
-                            name: "علوم الطبيعة والحياة",
-                            icon: "🧬",
-                            coef: 6,
-                            teacher: "د. عقبة (متخصص المنهجية الوزارية)",
-                            lessons: [{
-                                id: "lesson_bio_1",
-                                title: "الدرس 01: آليات تركيب البروتين (الاستنساخ والترجمة)",
-                                desc: "مقر الاستنساخ، مراحل العملية، ودور إنزيم ARN بوليميراز.",
-                                teacherIntro: "مرحباً بك يا بطل البكالوريا! أنا الدكتور عقبة.",
-                                sampleEx: { q: "تمرين تطبيقي في تركيب البروتين...", sol: "الحل بالخطوات المنهجية..." }
-                            }]
-                        }]
-                    }
-                };
-            }
             switchGrade();
         }
 
@@ -398,7 +466,7 @@
 
                 if(text.includes('تمريناً') || text.includes('تمرين')) {
                     if(lesson && lesson.sampleEx) {
-                        response = `📝 **${lesson.sampleEx.q}**\n\n💡 **الشرح والحل المنهجي المفصل:**\n${lesson.sampleEx.sol}`;
+                        response = `${lesson.sampleEx.q}\n\n${lesson.sampleEx.sol}`;
                     }
                 } else if(text.includes('تبسيط') || text.includes('أسهل')) {
                     response = "بكل بساطة! تخيل العملية كخط إنتاج في مصنع: المواد الخام يدخل بها الإنزيم، ويصيغها بمرونة ليخرج المنتج النهائي الجاهز للعمل!";
