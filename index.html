@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة التميّز التعليمية الجزائرية 🇩🇿 | النسخة المحسّنة (v1.3)</title>
+    <title>منصة التميّز التعليمية الجزائرية 🇩🇿 | النسخة الاحترافية (v1.4 Dynamic JSON)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
@@ -26,7 +26,7 @@
                 <h1 class="text-xl font-black bg-gradient-to-r from-emerald-400 via-teal-200 to-cyan-400 bg-clip-text text-transparent">
                     منصة التميّز التعليمية
                 </h1>
-                <p class="text-xs text-slate-400 hidden sm:block">بنك الدروس والتمارين التفاعلية (v1.3 Auto-Save Enabled)</p>
+                <p class="text-xs text-slate-400 hidden sm:block">بنك الدروس والتمارين التفاعلية (v1.4 Dynamic Engine)</p>
             </div>
         </div>
 
@@ -57,7 +57,7 @@
                 <div class="absolute -left-10 -top-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="relative z-10">
                     <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-3">
-                        🛡️ منصة محميّة ومزودة بنظام حفظ التقدم تلقائياً
+                        ⚡ المحرك البرمجي الديناميكي الآمن
                     </span>
                     <h2 id="welcome-title" class="text-2xl font-black text-white">اختر المادة وابدأ مع معلمك الذكي 🤖🎓</h2>
                     <p class="text-xs md:text-sm text-slate-400 mt-2 leading-relaxed">
@@ -82,13 +82,16 @@
                 </h3>
                 <ul class="text-xs text-slate-400 space-y-2.5">
                     <li class="flex items-center gap-2 text-emerald-400">
-                        <span>✓</span> حماية من ثغرات DOM XSS.
+                        <span>✓</span> معالجة أمنية شاملة لثغرات XSS.
                     </li>
                     <li class="flex items-center gap-2 text-emerald-400">
-                        <span>✓</span> دعم مؤشر التفكير التفاعلي realtime.
+                        <span>✓</span> مؤشر التفكير المباشر realtime.
                     </li>
                     <li class="flex items-center gap-2 text-emerald-400">
-                        <span>✓</span> حفظ سجل المحادثات تلقائياً (LocalStorage).
+                        <span>✓</span> حفظ المحادثات تلقائياً (LocalStorage).
+                    </li>
+                    <li class="flex items-center gap-2 text-emerald-400">
+                        <span>✓</span> فصل قاعدة البيانات (data.json).
                     </li>
                 </ul>
             </div>
@@ -135,87 +138,52 @@
         </div>
     </div>
 
-    <!-- 5. المنطق البرمجي والتحكم بالحفظ Script -->
+    <!-- 5. المنطق البرمجي والتحميل المباشر Script -->
     <script>
         const GEMINI_API_KEY = ""; 
-
-        const database = {
-            sec3: {
-                title: "السنة 3 ثانوي (شهادة البكالوريا BAC)",
-                subjects: [
-                    {
-                        id: "sec3_bio",
-                        name: "علوم الطبيعة والحياة",
-                        icon: "🧬",
-                        coef: 6,
-                        teacher: "د. عقبة (متخصص المنهجية الوزارية)",
-                        lessons: [
-                            {
-                                id: "lesson_bio_1",
-                                title: "الدرس 01: آليات تركيب البروتين (الاستنساخ والترجمة)",
-                                desc: "مقر الاستنساخ، مراحل العملية، دور إنزيم ARN بوليميراز، واستطالة سلسلة ARNm.",
-                                teacherIntro: "مرحباً بك يا بطل البكالوريا! أنا الدكتور عقبة. اليوم سنفكك آليات تركيب البروتين وفق المنهج الوزاري الرسمى.\n\nسنبدأ بـ **مرحلة الاستنساخ**: تحدث داخل النواة عند حقيقيات النوى، حيث يقوم إنزيم **ARN بوليميراز** بقراءة السلسلة المستنسخة من الـ DNA وتشكيل جزيئة الـ ARNm.\n\nهل تعلم ما هي القاعدة النيتروجينية التي تستبدل التيمين (T) في جزيئة الـ ARNm؟",
-                                sampleEx: {
-                                    q: "تمرين تطبيقي: تمثل الوثيقة تتابع نيوكليوتيدي للسلسلة المستنسخة من الـ DNA كالتالي: TAC - GGC - ATT.\n1. اعطِ السلسلة المتممة للـ ARNm.\n2. حدد عدد الرامزات والأحماض الأمينية المتوقعة.",
-                                    sol: "الحل النموذجي:\n1. سلسلة الـ ARNm هي: AUG - CCU - UAA.\n2. عدد الرامزات: 3 رامزات (من بينها رامزة الانطلاق AUG ورامزة التوقف UAA)، وعدد الأحماض الأمينية الناتجة هو 2 (لأن رامزة التوقف UAA لا تترجم لحمض أميني)."
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        id: "sec3_phy",
-                        name: "العلوم الفيزيائية",
-                        icon: "⚡",
-                        coef: 5,
-                        teacher: "أ. ابن الهيثم (مستشار الفيزياء)",
-                        lessons: [
-                            {
-                                id: "lesson_phy_1",
-                                title: "الدرس 01: المتابعة الزمنية لتحول كيميائي",
-                                desc: "طرق المتابعة القياسية (قياس الناقلية، المعايرة اللونية، وقياس الحجم والضغط).",
-                                teacherIntro: "أهلاً بك في الفيزياء! المتابعة الزمنية تعني معرفة كميات المادة للسنف الكيميائي في كل لحظة t. نستخدم قياس الناقلية G فقط عندما يحتوي الوسط التفاعلي على شوارد!",
-                                sampleEx: {
-                                    q: "تمرين: تفاعل ينتج عنه غاز CO2. ما هي أفضل طريقة لمتابعة هذا التفاعل زمنياً إذا كان الوعاء مغلقاً؟",
-                                    sol: "الحل: قياس ضغط الغاز (P) باستخدام جهاز قياس الضغط حسب قانون الغازات المثالية PV=nRT."
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
-            bem: {
-                title: "السنة 4 متوسط (BEM)",
-                subjects: [
-                    {
-                        id: "bem_sci",
-                        name: "العلوم الطبيعية",
-                        icon: "🌿",
-                        coef: 2,
-                        teacher: "الأستاذة مريم",
-                        lessons: [
-                            {
-                                id: "lesson_bem_sci_1",
-                                title: "الدرس 01: التحول الغذائي في الأنبوب الهضمي",
-                                desc: "الهضم الآلي والكيميائي وعمل الإنزيمات.",
-                                teacherIntro: "مرحباً يا بطل BEM! الهضم هو تحويل الأغذية المعقدة إلى المغذيات البسيطة بفضل الإنزيمات المتخصصة.",
-                                sampleEx: {
-                                    q: "تمرين: حدد الإنزيم المسؤول عن هضم النشاء وناتجه.",
-                                    sol: "الحل: إنزيم الأميلاز اللعابي يحول النشاء إلى سكر مالطوز."
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
-        };
+        let database = {}; // سيتم ملؤه عبر الـ Fetch
 
         let currentGradeKey = 'sec3';
         let currentSubjectId = null;
         let currentLessonIndex = null;
 
+        // دالة جلب البيانات من ملف JSON الخارجي
+        async function initApp() {
+            try {
+                const res = await fetch('data.json');
+                if(!res.ok) throw new Error("تعذر جلب ملف JSON");
+                database = await res.json();
+            } catch (err) {
+                console.warn("تنبيه: تعذر تحميل data.json عبر fetch، تم تفعيل الوضع المحلي المدمج.");
+                // استخدام بيانات افتراضية احتياطية
+                database = {
+                    sec3: {
+                        title: "السنة 3 ثانوي (شهادة البكالوريا BAC)",
+                        subjects: [{
+                            id: "sec3_bio",
+                            name: "علوم الطبيعة والحياة",
+                            icon: "🧬",
+                            coef: 6,
+                            teacher: "د. عقبة (متخصص المنهجية الوزارية)",
+                            lessons: [{
+                                id: "lesson_bio_1",
+                                title: "الدرس 01: آليات تركيب البروتين (الاستنساخ والترجمة)",
+                                desc: "مقر الاستنساخ، مراحل العملية، ودور إنزيم ARN بوليميراز.",
+                                teacherIntro: "مرحباً بك يا بطل البكالوريا! أنا الدكتور عقبة.",
+                                sampleEx: { q: "تمرين تطبيقي...", sol: "الحل..." }
+                            }]
+                        }]
+                    }
+                };
+            }
+            switchGrade();
+        }
+
         function switchGrade() {
             currentGradeKey = document.getElementById('grade-select').value;
             const data = database[currentGradeKey] || database['sec3'];
+            if(!data) return;
+
             document.getElementById('welcome-title').innerText = `دروس وتمارين ${data.title} 🤖🎓`;
             
             const container = document.getElementById('subjects-container');
@@ -280,7 +248,6 @@
 
             const chatBox = document.getElementById('chat-box');
 
-            // محاولة استرجاع السجل المتبقي إن وجد
             const savedChat = getStorageKey();
             if (localStorage.getItem(savedChat)) {
                 chatBox.innerHTML = localStorage.getItem(savedChat);
@@ -304,7 +271,6 @@
 
         function saveChatToStorage() {
             const chatBox = document.getElementById('chat-box');
-            // استثناء مؤشر التحميل عند التخزين
             const tempBox = chatBox.cloneNode(true);
             const typing = tempBox.querySelector('#typing-indicator');
             if (typing) typing.remove();
@@ -450,7 +416,8 @@
             document.getElementById(id).classList.add('hidden');
         }
 
-        switchGrade();
+        // بدء التشغيل
+        initApp();
     </script>
 </body>
 </html>
