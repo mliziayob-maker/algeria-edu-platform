@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة التميّز التعليمية الجزائرية 🇩🇿 | النسخة المحسّنة والآمنة</title>
+    <title>منصة التميّز التعليمية الجزائرية 🇩🇿 | النسخة المحسّنة (v1.3)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
@@ -26,7 +26,7 @@
                 <h1 class="text-xl font-black bg-gradient-to-r from-emerald-400 via-teal-200 to-cyan-400 bg-clip-text text-transparent">
                     منصة التميّز التعليمية
                 </h1>
-                <p class="text-xs text-slate-400 hidden sm:block">بنك الدروس والتمارين التفاعلية (v1.2 AI Ready)</p>
+                <p class="text-xs text-slate-400 hidden sm:block">بنك الدروس والتمارين التفاعلية (v1.3 Auto-Save Enabled)</p>
             </div>
         </div>
 
@@ -57,7 +57,7 @@
                 <div class="absolute -left-10 -top-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="relative z-10">
                     <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-3">
-                        🛡️ منصة تعليمية محمية ومزودة بأستاذ ذكي
+                        🛡️ منصة محميّة ومزودة بنظام حفظ التقدم تلقائياً
                     </span>
                     <h2 id="welcome-title" class="text-2xl font-black text-white">اختر المادة وابدأ مع معلمك الذكي 🤖🎓</h2>
                     <p class="text-xs md:text-sm text-slate-400 mt-2 leading-relaxed">
@@ -82,13 +82,13 @@
                 </h3>
                 <ul class="text-xs text-slate-400 space-y-2.5">
                     <li class="flex items-center gap-2 text-emerald-400">
-                        <span>✓</span> معالجة أمنية شاملة (إغلاق ثغرة XSS).
+                        <span>✓</span> حماية من ثغرات DOM XSS.
                     </li>
                     <li class="flex items-center gap-2 text-emerald-400">
-                        <span>✓</span> إضافة مؤشر التفكير التفاعلي realtime.
+                        <span>✓</span> دعم مؤشر التفكير التفاعلي realtime.
                     </li>
                     <li class="flex items-center gap-2 text-emerald-400">
-                        <span>✓</span> تجهيز الربط التلقائي بـ Gemini API.
+                        <span>✓</span> حفظ سجل المحادثات تلقائياً (LocalStorage).
                     </li>
                 </ul>
             </div>
@@ -114,8 +114,8 @@
                     <p id="teacher-topic" class="text-xs text-emerald-400 font-medium">الدرس</p>
                 </div>
             </div>
-            <div class="flex items-center gap-3">
-                <span class="hidden sm:inline-block text-[11px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full font-semibold">حصة تفاعلية آمنة 🔒</span>
+            <div class="flex items-center gap-2">
+                <button onclick="clearChatHistory()" class="px-3 py-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-[11px] font-bold text-red-400 transition">مسح السجل 🗑️</button>
                 <button onclick="closeModal('teacher-modal')" class="px-4 py-2 rounded-xl bg-slate-800 text-xs font-bold text-slate-300 hover:bg-slate-700 transition">إنهاء الحصة ✕</button>
             </div>
         </div>
@@ -135,12 +135,10 @@
         </div>
     </div>
 
-    <!-- 5. المنطق البرمجي السليم والتفاعلي Script -->
+    <!-- 5. المنطق البرمجي والتحكم بالحفظ Script -->
     <script>
-        // مفتاح Gemini API (يمكنك إضافة المفتاح هنا لتشغيل الذكاء الاصطناعي الحقيقي)
         const GEMINI_API_KEY = ""; 
 
-        // قاعدة البيانات المنظمة
         const database = {
             sec3: {
                 title: "السنة 3 ثانوي (شهادة البكالوريا BAC)",
@@ -281,17 +279,55 @@
             document.getElementById('teacher-topic').innerText = lesson.title;
 
             const chatBox = document.getElementById('chat-box');
+
+            // محاولة استرجاع السجل المتبقي إن وجد
+            const savedChat = getStorageKey();
+            if (localStorage.getItem(savedChat)) {
+                chatBox.innerHTML = localStorage.getItem(savedChat);
+            } else {
+                chatBox.innerHTML = `
+                    <div class="bg-slate-900 border border-slate-800 p-5 rounded-3xl max-w-2xl leading-relaxed shadow-lg">
+                        <p class="text-xs font-bold text-emerald-400 mb-2">${subject.teacher}</p>
+                        <p class="text-xs text-slate-200 whitespace-pre-line leading-relaxed">${lesson.teacherIntro}</p>
+                    </div>
+                `;
+                saveChatToStorage();
+            }
+
+            document.getElementById('teacher-modal').classList.remove('hidden');
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function getStorageKey() {
+            return `chat_history_${currentGradeKey}_${currentSubjectId}_${currentLessonIndex}`;
+        }
+
+        function saveChatToStorage() {
+            const chatBox = document.getElementById('chat-box');
+            // استثناء مؤشر التحميل عند التخزين
+            const tempBox = chatBox.cloneNode(true);
+            const typing = tempBox.querySelector('#typing-indicator');
+            if (typing) typing.remove();
+            
+            localStorage.setItem(getStorageKey(), tempBox.innerHTML);
+        }
+
+        function clearChatHistory() {
+            const key = getStorageKey();
+            localStorage.removeItem(key);
+            const subject = database[currentGradeKey].subjects.find(s => s.id === currentSubjectId);
+            const lesson = subject.lessons[currentLessonIndex];
+            
+            const chatBox = document.getElementById('chat-box');
             chatBox.innerHTML = `
                 <div class="bg-slate-900 border border-slate-800 p-5 rounded-3xl max-w-2xl leading-relaxed shadow-lg">
                     <p class="text-xs font-bold text-emerald-400 mb-2">${subject.teacher}</p>
                     <p class="text-xs text-slate-200 whitespace-pre-line leading-relaxed">${lesson.teacherIntro}</p>
                 </div>
             `;
-
-            document.getElementById('teacher-modal').classList.remove('hidden');
+            saveChatToStorage();
         }
 
-        // إظهار وإخفاء مؤشر التفكير Realtime
         function showTypingIndicator() {
             const chatBox = document.getElementById('chat-box');
             const indicator = document.createElement('div');
@@ -314,7 +350,6 @@
             if (indicator) indicator.remove();
         }
 
-        // إرسال الإجابة ومعالجة الرد (AI / Fallback)
         async function sendStudentAnswer(customText = null) {
             const input = document.getElementById('student-input');
             const text = customText || input.value.trim();
@@ -330,13 +365,13 @@
 
             if(!customText) input.value = '';
             chatBox.scrollTop = chatBox.scrollHeight;
+            saveChatToStorage();
 
             const subject = database[currentGradeKey].subjects.find(s => s.id === currentSubjectId);
             const lesson = subject.lessons[currentLessonIndex];
 
             showTypingIndicator();
 
-            // 1. الاتصال بـ API في حال توفر المفتاح
             if (GEMINI_API_KEY && GEMINI_API_KEY !== "") {
                 try {
                     const systemPrompt = `أنت ${subject.teacher}، أستاذ متخصص في ${subject.name} للتعليم الجزائري. الدرس الحالي هو "${lesson.title}". أجبت الطالب بأسلوب تربوي مشجع، صحح أخطاءه بالمنهجية الرسمية، واشرح باختصار ووضوح.`;
@@ -367,7 +402,6 @@
                 }
             }
 
-            // 2. المنطق الاحتياطي (Fallback)
             setTimeout(() => {
                 removeTypingIndicator();
                 let response = "إجابة وملاحظة ممتازة! تدل على تركيزك العالي. هل تريد الانتقال إلى التمرين التطبيقي المباشر؟";
@@ -395,6 +429,7 @@
                 </div>
             `;
             chatBox.scrollTop = chatBox.scrollHeight;
+            saveChatToStorage();
         }
 
         function handleKeyPress(e) {
@@ -405,7 +440,6 @@
             sendStudentAnswer(text);
         }
 
-        // دالة تنظيف النصوص وحماية من XSS
         function escapeHTML(str) {
             return str.replace(/[&<>'"]/g, 
                 tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
@@ -416,7 +450,6 @@
             document.getElementById(id).classList.add('hidden');
         }
 
-        // البدء التلقائي
         switchGrade();
     </script>
 </body>
