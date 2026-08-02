@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منصة التميّز التعليمية الجزائرية 🇩🇿</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Tajawal', sans-serif; }
@@ -72,110 +73,61 @@
 
             <!-- قائمة المواد الأساسية حسب المنهج الوزاري -->
             <div>
-                <h3 className="text-lg font-bold text-slate-200 mb-4 flex items-center gap-2">
+                <h3 class="text-lg font-bold text-slate-200 mb-4 flex items-center gap-2">
                     <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
                     المواد الأساسية (حسب المعاملات الرسمية)
                 </h3>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    
-                    <!-- بطاقة العلوم الطبيعية -->
+                    <!-- العلوم الطبيعية -->
                     <div class="group bg-slate-900 hover:bg-slate-800/80 p-5 rounded-2xl border border-slate-800 hover:border-emerald-500/50 transition duration-300 cursor-pointer">
                         <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center text-2xl">
-                                🧬
-                            </div>
-                            <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full border border-slate-700">
-                                المعامل: 6
-                            </span>
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center text-2xl">🧬</div>
+                            <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full border border-slate-700">المعامل: 6</span>
                         </div>
-                        <h4 class="font-bold text-lg text-slate-100 group-hover:text-emerald-400 transition">
-                            علوم الطبيعة والحياة
-                        </h4>
-                        <p class="text-xs text-slate-400 mt-1">
-                            المجال 1: التخصص الوظيفي للبروتينات (تركيب البروتين، الإنزيمات)
-                        </p>
+                        <h4 class="font-bold text-lg text-slate-100 group-hover:text-emerald-400 transition">علوم الطبيعة والحياة</h4>
+                        <p class="text-xs text-slate-400 mt-1">المجال 1: التخصص الوظيفي للبروتينات</p>
                         <div class="mt-4 pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-slate-400">
                             <span>12 درس تفاعلي</span>
                             <span class="text-emerald-400 font-medium">دخول المادة ←</span>
                         </div>
                     </div>
 
-                    <!-- بطاقة العلوم الفيزيائية -->
+                    <!-- الفيزياء -->
                     <div class="group bg-slate-900 hover:bg-slate-800/80 p-5 rounded-2xl border border-slate-800 hover:border-teal-500/50 transition duration-300 cursor-pointer">
                         <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-400 border border-teal-500/20 flex items-center justify-center text-2xl">
-                                ⚡
-                            </div>
-                            <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full border border-slate-700">
-                                المعامل: 5
-                            </span>
+                            <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-400 border border-teal-500/20 flex items-center justify-center text-2xl">⚡</div>
+                            <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full border border-slate-700">المعامل: 5</span>
                         </div>
-                        <h4 class="font-bold text-lg text-slate-100 group-hover:text-teal-400 transition">
-                            العلوم الفيزيائية
-                        </h4>
-                        <p class="text-xs text-slate-400 mt-1">
-                            الوحدة 1: المتابعة الزمنية لتحول كيميائي في وسط مائي
-                        </p>
+                        <h4 class="font-bold text-lg text-slate-100 group-hover:text-teal-400 transition">العلوم الفيزيائية</h4>
+                        <p class="text-xs text-slate-400 mt-1">الوحدة 1: المتابعة الزمنية لتحول كيميائي</p>
                         <div class="mt-4 pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-slate-400">
                             <span>15 محاكاة + تمارين</span>
                             <span class="text-teal-400 font-medium">دخول المادة ←</span>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- بطاقة الرياضيات -->
-                    <div class="group bg-slate-900 hover:bg-slate-800/80 p-5 rounded-2xl border border-slate-800 hover:border-blue-500/50 transition duration-300 cursor-pointer">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20 flex items-center justify-center text-2xl">
-                                📐
-                            </div>
-                            <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full border border-slate-700">
-                                المعامل: 5
-                            </span>
-                        </div>
-                        <h4 class="font-bold text-lg text-slate-100 group-hover:text-blue-400 transition">
-                            الرياضيات
-                        </h4>
-                        <p class="text-xs text-slate-400 mt-1">
-                            الدوال العددية، الدوال الأسية واللوغاريتمية + الهندسة الفضائية
-                        </p>
-                        <div class="mt-4 pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-slate-400">
-                            <span>20 موضوع محلول</span>
-                            <span class="text-blue-400 font-medium">دخول المادة ←</span>
-                        </div>
-                    </div>
-
-                    <!-- بطاقة العلوم الاسلامية والأدب -->
-                    <div class="group bg-slate-900 hover:bg-slate-800/80 p-5 rounded-2xl border border-slate-800 hover:border-amber-500/50 transition duration-300 cursor-pointer">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center justify-center text-2xl">
-                                📚
-                            </div>
-                            <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full border border-slate-700">
-                                المعامل: 3
-                            </span>
-                        </div>
-                        <h4 class="font-bold text-lg text-slate-100 group-hover:text-amber-400 transition">
-                            اللغة العربية والعلوم الإسلامية
-                        </h4>
-                        <p class="text-xs text-slate-400 mt-1">
-                            القواعد والظواهر البلاغية + ملخصات الشريعة الإسلامية
-                        </p>
-                        <div class="mt-4 pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-slate-400">
-                            <span>خرائط ذهنية شاملة</span>
-                            <span class="text-amber-400 font-medium">دخول المادة ←</span>
-                        </div>
-                    </div>
-
+            <!-- قسم بنك المواضيع المباشر -->
+            <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                    <h3 class="font-bold text-emerald-400 text-md flex items-center gap-2">
+                        <span>📂</span> بنك مواضيع BAC و BEM (المزامنة مع Supabase)
+                    </h3>
+                    <span id="db-status" class="text-xs px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                        جاري الاتصال...
+                    </span>
+                </div>
+                <div id="exams-list" class="space-y-3 text-xs text-slate-400">
+                    <p class="text-center py-4">جاري تحميل المواضيع النموذجية من قاعدة البيانات...</p>
                 </div>
             </div>
 
         </div>
 
-        <!-- العمود الجانبي: المساعد الذكي وبنك الامتحانات (4 أعمود) -->
+        <!-- العمود الجانبي: المساعد الذكي -->
         <div class="lg:col-span-4 space-y-6">
-            
-            <!-- المساعد الذكي -->
             <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800">
                 <div class="flex items-center gap-3 mb-3">
                     <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
@@ -185,32 +137,53 @@
                     اطرح أي سؤال في المنهج وسيتم توجيهك وفق منهجية التصحيح الوزاري الرسمية.
                 </p>
                 <div class="space-y-2">
-                    <input 
-                        type="text" 
-                        placeholder="كيف أصيغ فرضية في مادة العلوم؟" 
-                        class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition"
-                    >
-                    <button class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2 rounded-xl text-xs transition">
+                    <input id="ai-input" type="text" placeholder="كيف أصيغ فرضية في مادة العلوم؟" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition">
+                    <button onclick="askAI()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2 rounded-xl text-xs transition">
                         طرح السؤال على الذكاء الاصطناعي
                     </button>
                 </div>
+                <div id="ai-response" class="hidden mt-4 p-3 bg-slate-950 rounded-xl border border-slate-800 text-xs text-emerald-300 leading-relaxed"></div>
             </div>
-
-            <!-- بنك الامتحانات الرسمية -->
-            <div class="bg-gradient-to-br from-emerald-950/40 to-slate-900 p-5 rounded-2xl border border-emerald-500/20">
-                <h3 class="font-bold text-emerald-400 text-sm mb-1 flex items-center gap-2">
-                    <span>🎯</span> بنك المواضيع التصحيحية (BAC / BEM)
-                </h3>
-                <p class="text-xs text-slate-300 mb-4 leading-relaxed">
-                    مواضيع شهادة البكالوريا والتعليم المتوسط للسنوات السابقة مع سلم التنقيط المعتمد.
-                </p>
-                <button class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition shadow-lg shadow-emerald-500/10">
-                    دخول بنك الامتحانات الرسمية
-                </button>
-            </div>
-
         </div>
 
     </main>
+
+    <!-- سكربت المحاكاة والتفاعل -->
+    <script>
+        // إشارة محاكاة الاتصال بقاعدة البيانات
+        setTimeout(() => {
+            const status = document.getElementById('db-status');
+            const list = document.getElementById('exams-list');
+            
+            status.className = "text-xs px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
+            status.innerText = "متصل بـ Supabase ✓";
+
+            list.innerHTML = `
+                <div class="flex justify-between items-center p-3 bg-slate-950 rounded-xl border border-slate-800/80 hover:border-emerald-500/30 transition">
+                    <div>
+                        <p class="font-bold text-slate-200">موضوع العلوم الطبيعية — بكالوريا تجريبية 2026</p>
+                        <p class="text-[10px] text-slate-500 mt-0.5">الشعبة: علوم تجريبية | التصحيح النموذج الوزاري مرفق</p>
+                    </div>
+                    <button class="bg-emerald-500/10 text-emerald-400 px-3 py-1.5 rounded-lg border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition font-semibold">تحميل PDF</button>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-slate-950 rounded-xl border border-slate-800/80 hover:border-teal-500/30 transition">
+                    <div>
+                        <p class="font-bold text-slate-200">موضوع الفيزياء — BEM شهادة التعليم المتوسط</p>
+                        <p class="text-[10px] text-slate-500 mt-0.5">شامل لجميع الميادين المعتمدة | سلم التنقيط 20/20</p>
+                    </div>
+                    <button class="bg-teal-500/10 text-teal-400 px-3 py-1.5 rounded-lg border border-teal-500/30 hover:bg-teal-500 hover:text-slate-950 transition font-semibold">تحميل PDF</button>
+                </div>
+            `;
+        }, 1200);
+
+        function askAI() {
+            const input = document.getElementById('ai-input');
+            const res = document.getElementById('ai-response');
+            if(!input.value.trim()) return;
+            
+            res.classList.remove('hidden');
+            res.innerHTML = "💡 <b>إجابة المساعد البيدغوجي:</b> لصياغة فرضية علمية دقيقة في مادة العلوم الطبيعية، ابدأ بعبارة: <i>'نفرض أن...'</i> وربطها بالآلية المعنية مع تقديم تعليل منطقي يعتمد على المكتسبات القبلية وسياق التمرين.";
+        }
+    </script>
 </body>
 </html>
