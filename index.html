@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="أكاديمية أمين الإلكترونية - منصة تعليمية مجانية متكاملة مدعومة بالذكاء الاصطناعي">
+    <meta name="author" content="Melizi Elouanasse, mliziayob-maker">
+    <title>أكاديمية أمين الإلكترونية | Amin Electronic Academy</title>
+    
+    <!-- Normalize CSS & Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Main StyleSheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header / Navigation Bar -->
+    <header class="main-header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fa-solid fa-graduation-cap logo-icon"></i>
+                <span class="logo-text">أكاديمية <span class="highlight">أمين</span></span>
+            </div>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="#hero" class="nav-link active">الرئيسية</a>
+                <a href="#features" class="nav-link">المميزات</a>
+                <a href="#ai-teacher" class="nav-link">المعلم الذكي</a>
+                <a href="#roadmap" class="nav-link">شجرة المعرفة</a>
+                <a href="#team" class="nav-link">فريق العمل</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="btn btn-primary" id="startBtn">ابدأ التعلم مجاناً</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="قائمة الملاحة">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="badge"><i class="fa-solid fa-sparkles"></i> الجيل الجديد من التعليم</span>
+                <h1 class="hero-title">تعلم بطريقة تفاعلية تبهر العالم مع الذكاء الاصطناعي</h1>
+                <p class="hero-description">
+                    أكاديمية أمين الإلكترونية تقدم تجربة تعليمية فريدة ومجانية تماماً لجميع المراحل والتخصصات عبر معلمين افتراضيين، شجرة مهارات تفاعلية، ومختبرات بصريّة دقيقة.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#ai-teacher" class="btn btn-primary btn-lg">جرب المعلم الذكي الان</a>
+                    <a href="#features" class="btn btn-secondary btn-lg">استكشف الميزات</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="card-preview">
+                    <div class="card-header">
+                        <i class="fa-solid fa-robot"></i>
+                        <span>المعلم الافتراضي أستاذ "أمين"</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="chat-msg bot">مرحباً بك! أنا جاهز لشرح أي درس وتوليد تمارين مخصصة لك الآن. ماذا تحب أن نتعلم اليوم؟</p>
+                        <p class="chat-msg user">أريد شرح درس الرياضيات وتوليد تمارين تفاعلية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>لماذا منصة أكاديمية أمين؟</h2>
+                <p>ركائز أساسية تم تصميمها لتقديم أعلى جودة تعليمية وسلاسة مطلقة</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-brain"></i></div>
+                    <h3>معلم ذكاء اصطناعي تفاعلي</h3>
+                    <p>يقوم بشرح المفاهيم المعقدة خطوة بخطوة ويجيب على أسئلتك ويصيغ اختبارات تفاعلية فورية تناسب مستواك.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-sitemap"></i></div>
+                    <h3>شجرة المعرفة التكيفية</h3>
+                    <p>نظام تعلم محفز ومبني كالألعاب ($XP$) يسير بك من المبادئ الأساسية إلى الاحتراف خطوة بخطوة دون تشتت.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-flask"></i></div>
+                    <h3>مختبرات افتراضية فائقة الدقة</h3>
+                    <p>محاكاة علمية بصرية دقيقة وممتعة لدروس الفيزياء والكيمياء والعلوم عبر شاشة هاتفك مباشرة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Teacher Demo Section -->
+    <section class="ai-teacher-section" id="ai-teacher">
+        <div class="container">
+            <div class="section-title">
+                <h2>المعلم الذكي التفاعلي (AI Teacher)</h2>
+                <p>شرح مخصص وتوليد تمارين فورية لجميع المراحل الدراسية</p>
+            </div>
+
+            <div class="chat-container">
+                <div class="chat-box" id="chatBox">
+                    <div class="message bot-message">
+                        <i class="fa-solid fa-robot bot-avatar"></i>
+                        <div class="message-content">
+                            أهلاً بك في أكاديمية أمين! اكتب الدرس أو التمرين الذي تريد مناقشته وسأقوم بشرحه لك فوراً.
+                        </div>
+                    </div>
+                </div>
+                <form class="chat-input-area" id="chatForm">
+                    <input type="text" id="userInput" placeholder="اكتب سؤالك أو موضوع الدرس هنا..." required autocomplete="off">
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> إرسال</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>فريق العمل والتطوير</h2>
+                <p>العقول التي تقود مشروع أكاديمية أمين نحو العالمية</p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar"><i class="fa-solid fa-user-gear"></i></div>
+                    <h3>mliziayob-maker</h3>
+                    <p class="role">إدارة وتطوير المنصة</p>
+                    <a href="mailto:mliziayob@gmail.com" class="team-email"><i class="fa-solid fa-envelope"></i> mliziayob@gmail.com</a>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar"><i class="fa-solid fa-user-tie"></i></div>
+                    <h3>Melizi Elouanasse</h3>
+                    <p class="role">خبير تنفيذي وتطوير المحتوى</p>
+                    <span class="team-tag">عضو فريق العمل القيادي</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 أكاديمية أمين الإلكترونية (Amin Electronic Academy). جميع الحقوق محفوظة.</p>
+            <p class="contact-info">للتواصل والدعم: <a href="mailto:mliziayob@gmail.com">mliziayob@gmail.com</a></p>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>
