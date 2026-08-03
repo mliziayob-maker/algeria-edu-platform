@@ -1,0 +1,24 @@
+academie-amine/
+├── index.html
+├── css/
+│   ├── style.css
+│   ├── dark-mode.css
+│   └── responsive.css
+├── js/
+│   ├── app.js
+│   ├── auth.js
+│   ├── database.js
+│   ├── chat.js
+│   └── lessons.js
+├── pages/
+│   ├── login.html
+│   ├── register.html
+│   ├── dashboard.html
+│   └── profile.html
+├── assets/
+│   ├── images/
+│   ├── icons/
+│   └── fonts/
+├── config/
+│   └── firebase-config.js
+└── service-worker.js
