@@ -1,4 +1,4 @@
-// js/auth.js - نظام المصادقة المتكامل
+// js/auth-system.js - نظام المصادقة المتكامل (تم إعادة تسميته)
 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
 import { 
@@ -10,45 +10,36 @@ import {
     FacebookAuthProvider,
     sendPasswordResetEmail,
     updateProfile,
-    onAuthStateChanged
+    onAuthStateChanged,
+    signOut
 } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { getFirestore, doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
-
-// تهيئة Firebase
-const firebaseConfig = {
-    apiKey: "AIzaSy...", // سيتم استبداله بمفتاح حقيقي
-    authDomain: "academie-amine.firebaseapp.com",
-    projectId: "academie-amine",
-    storageBucket: "academie-amine.appspot.com",
-    messagingSenderId: "123456789",
-    appId: "1:123456789:web:abcdef"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-// ===== نظام المصادقة =====
+import { FIREBASE_CONFIG } from '../config/firebase-config.js';
 
 class AuthSystem {
     constructor() {
+        this.app = initializeApp(FIREBASE_CONFIG);
+        this.auth = getAuth(this.app);
+        this.db = getFirestore(this.app);
         this.currentUser = null;
-        this.auth = auth;
-        this.db = db;
-        this.init();
+        this.userData = null;
+        this.authListeners = [];
     }
 
+    // تهيئة النظام
     init() {
-        // مراقبة حالة المستخدم
-        onAuthStateChanged(this.auth, async (user) => {
-            if (user) {
-                this.currentUser = user;
-                await this.loadUserData(user.uid);
-                this.redirectToDashboard();
-            } else {
-                this.currentUser = null;
-                this.redirectToLogin();
-            }
+        return new Promise((resolve) => {
+            onAuthStateChanged(this.auth, async (user) => {
+                if (user) {
+                    this.currentUser = user;
+                    await this.loadUserData(user.uid);
+                } else {
+                    this.currentUser = null;
+                    this.userData = null;
+                }
+                this.notifyListeners();
+                resolve(this.currentUser);
+            });
         });
     }
 
@@ -62,29 +53,20 @@ class AuthSystem {
         }
     }
 
-    // إنشاء حساب جديد
-    async register(email, password, username) {
+    // إنشاء حساب
+    async register(email, password, username, grade = 'sec3') {
         try {
             const result = await createUserWithEmailAndPassword(this.auth, email, password);
-            // تحديث الملف الشخصي
             await updateProfile(result.user, { displayName: username });
             
-            // حفظ بيانات المستخدم في Firestore
             await setDoc(doc(this.db, "users", result.user.uid), {
-                username: username,
-                email: email,
+                username,
+                email,
+                grade,
                 createdAt: new Date().toISOString(),
                 role: 'student',
-                progress: {
-                    totalLessons: 0,
-                    completedLessons: 0,
-                    averageScore: 0
-                },
-                preferences: {
-                    theme: 'dark',
-                    notifications: true,
-                    language: 'ar'
-                }
+                progress: { totalLessons: 0, completedLessons: 0, averageScore: 0 },
+                preferences: { theme: 'dark', notifications: true, language: 'ar' }
             });
             
             return { success: true, user: result.user };
@@ -119,7 +101,7 @@ class AuthSystem {
     async resetPassword(email) {
         try {
             await sendPasswordResetEmail(this.auth, email);
-            return { success: true, message: "تم إرسال رابط إعادة التعيين إلى بريدك الإلكتروني" };
+            return { success: true, message: "تم إرسال رابط إعادة التعيين" };
         } catch (error) {
             return { success: false, error: this.getErrorMessage(error.code) };
         }
@@ -128,7 +110,7 @@ class AuthSystem {
     // تسجيل الخروج
     async logout() {
         try {
-            await this.auth.signOut();
+            await signOut(this.auth);
             return { success: true };
         } catch (error) {
             return { success: false, error: error.message };
@@ -151,34 +133,44 @@ class AuthSystem {
         }
     }
 
-    // رسائل الخطأ المخصصة
+    // إضافة مستمع للتغييرات
+    addListener(callback) {
+        this.authListeners.push(callback);
+        if (this.currentUser) callback(this.currentUser, this.userData);
+    }
+
+    notifyListeners() {
+        this.authListeners.forEach(cb => cb(this.currentUser, this.userData));
+    }
+
+    // رسائل الخطأ
     getErrorMessage(code) {
         const errors = {
             'auth/user-not-found': '⚠️ لم يتم العثور على هذا البريد الإلكتروني',
             'auth/wrong-password': '❌ كلمة المرور غير صحيحة',
             'auth/email-already-in-use': '📧 هذا البريد الإلكتروني مستخدم بالفعل',
             'auth/invalid-email': '⚠️ البريد الإلكتروني غير صالح',
-            'auth/weak-password': '🔒 كلمة المرور ضعيفة (يجب أن تكون 6 أحرف على الأقل)',
-            'auth/too-many-requests': '⏳ تم إرسال طلبات كثيرة جداً، حاول لاحقاً',
-            'auth/network-request-failed': '🌐 مشكلة في الشبكة، تحقق من اتصالك بالإنترنت',
-            'auth/popup-closed-by-user': '🔄 تم إلغاء العملية، حاول مرة أخرى'
+            'auth/weak-password': '🔒 كلمة المرور ضعيفة (6 أحرف على الأقل)',
+            'auth/too-many-requests': '⏳ تم إرسال طلبات كثيرة، حاول لاحقاً',
+            'auth/network-request-failed': '🌐 مشكلة في الشبكة، تحقق من اتصالك'
         };
-        return errors[code] || '❌ حدث خطأ غير متوقع، حاول مرة أخرى';
+        return errors[code] || '❌ حدث خطأ غير متوقع';
     }
 
-    redirectToDashboard() {
-        if (!window.location.pathname.includes('dashboard.html')) {
-            window.location.href = 'dashboard.html';
-        }
+    // التحقق من حالة المصادقة
+    isAuthenticated() {
+        return !!this.currentUser;
     }
 
-    redirectToLogin() {
-        if (!window.location.pathname.includes('login.html') && 
-            !window.location.pathname.includes('register.html')) {
-            window.location.href = 'login.html';
-        }
+    // الحصول على معرف المستخدم
+    getUserId() {
+        return this.currentUser?.uid || null;
+    }
+
+    // الحصول على بيانات المستخدم
+    getUserData() {
+        return this.userData;
     }
 }
 
-// تصدير النظام للاستخدام
-export default new AuthSystem();
+export default AuthSystem;
