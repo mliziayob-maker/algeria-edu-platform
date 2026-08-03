@@ -1,0 +1,27 @@
+academie-amine/
+├── index.html                          (الصفحة الرئيسية)
+├── login.html                          (تسجيل الدخول)
+├── register.html                       (إنشاء حساب)
+├── dashboard.html                      (لوحة التحكم)
+│
+├── css/
+│   ├── main-style.css                  (الأنماط الأساسية)
+│   ├── auth-style.css                  (أنماط المصادقة)
+│   ├── dashboard-style.css             (أنماط لوحة التحكم)
+│   └── responsive-style.css            (أنماط الاستجابة)
+│
+├── js/
+│   ├── main-app.js                     (التطبيق الرئيسي)
+│   ├── auth-system.js                  (نظام المصادقة)
+│   ├── database-manager.js             (إدارة قاعدة البيانات)
+│   ├── chat-engine.js                  (محرك المحادثة)
+│   ├── lessons-manager.js              (إدارة الدروس)
+│   └── analytics-tracker.js            (تتبع التحليلات)
+│
+├── config/
+│   └── firebase-config.js              (إعدادات Firebase)
+│
+└── assets/
+    ├── images/
+    ├── icons/
+    └── fonts/
