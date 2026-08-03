@@ -2,138 +2,210 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أكاديمية أمين الإلكترونية | Amin Electronic Academy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>أكاديمية أمين الإلكترونية | منصة التعليم الذكي التفاعلي</title>
+    <!-- CSS & Icon Libraries -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Header & Navigation -->
+    <!-- Header / Navigation -->
     <header class="navbar">
         <div class="container nav-container">
             <div class="logo">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <span>أكاديمية أمين</span>
+                <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div class="logo-text">
+                    <span class="brand-title">أكاديمية أمين</span>
+                    <span class="brand-subtitle">AMIN ELECTRONIC ACADEMY</span>
+                </div>
             </div>
-            <button class="menu-toggle" id="menuToggle" aria-label="قائمة التصفح">
-                <i class="fa-solid fa-bars"></i>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="القائمة">
+                <i class="fa-solid fa-bars-staggered"></i>
             </button>
+
             <nav class="nav-menu" id="navMenu">
-                <a href="#hero" class="nav-link active">الرئيسية</a>
-                <a href="#levels" class="nav-link">المستويات الدراسية</a>
-                <a href="#lessons" class="nav-link">الدروس والتمارين</a>
-                <a href="#ai-teacher" class="nav-link">الأستاذ الذكي</a>
-                <a href="#contact" class="nav-link btn-primary-sm">التسجيل</a>
+                <a href="#hero" class="nav-link active"><i class="fa-solid fa-house"></i> الرئيسية</a>
+                <a href="#levels" class="nav-link"><i class="fa-solid fa-layer-group"></i> المستويات</a>
+                <a href="#hub" class="nav-link"><i class="fa-solid fa-book-bookmark"></i> بنك المعرفة</a>
+                <a href="#ai-teacher" class="nav-link"><i class="fa-solid fa-robot"></i> الأستاذ الذكي</a>
+                <a href="#contact" class="btn-primary-sm"><i class="fa-solid fa-user-plus"></i> انضم إلينا</a>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="hero" class="hero">
+    <section id="hero" class="hero-section">
+        <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <h1>منصة التعليم التفاعلي الأولى بالذكاء الاصطناعي</h1>
-            <p>دروس تفاعلية، تمارين محلولة، وأستاذ افتراضي يجيب على أسئلتك ويصيغ لك التمارين فوراً لكل الأطوار التعليمية.</p>
-            <div class="hero-btns">
-                <a href="#lessons" class="btn btn-primary">استكشف الدروس والتمارين</a>
-                <a href="#ai-teacher" class="btn btn-secondary">جرب الأستاذ الذكي</a>
+            <span class="hero-badge"><i class="fa-solid fa-bolt"></i> الجيل الجديد من التعليم الرقمي</span>
+            <h1>ارتقِ بمستواك الدراسي مع <span>أكاديمية أمين</span> الذكية</h1>
+            <p>منظومة تعليمية متكاملة لجميع الأطوار والمسارات الدراسية، مدعومة بأستاذ افتراضي يعتمد على الذكاء الاصطناعي لشرح الدروس وصياغة التمارين فورياً.</p>
+            
+            <div class="hero-actions">
+                <a href="#hub" class="btn btn-glow"><i class="fa-solid fa-rocket"></i> ابدأ التعلم الآن</a>
+                <a href="#ai-teacher" class="btn btn-outline"><i class="fa-solid fa-comments"></i> تجربة الأستاذ الذكي</a>
+            </div>
+
+            <!-- Fast Stats -->
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <i class="fa-solid fa-users"></i>
+                    <div>
+                        <strong>+10,000</strong>
+                        <span>تلميذ مسجل</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <i class="fa-solid fa-file-pen"></i>
+                    <div>
+                        <strong>+500</strong>
+                        <span>درس وتمرين محلول</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <i class="fa-solid fa-brain"></i>
+                    <div>
+                        <strong>24/7</strong>
+                        <span>دعم بالذكاء الاصطناعي</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Academic Levels -->
+    <!-- Academic Levels Section -->
     <section id="levels" class="section">
         <div class="container">
-            <h2 class="section-title">الأطوار والمستويات التعليمية</h2>
+            <div class="section-header text-center">
+                <span class="sub-title">المسارات المتاحة</span>
+                <h2>الأطوار التعليمية المشمولة</h2>
+                <div class="header-line"></div>
+            </div>
+
             <div class="cards-grid">
-                <div class="card">
-                    <i class="fa-solid fa-child card-icon"></i>
+                <div class="card-level">
+                    <div class="card-icon bg-primary"><i class="fa-solid fa-shapes"></i></div>
                     <h3>التعليم الابتدائي</h3>
-                    <p>أساسيات الرياضيات، اللغة العربية، والعلوم بشكل تفاعلي مبسط.</p>
+                    <p>ترسيخ الأساسيات في الرياضيات، اللغة العربية، والعلوم بأسلوب بصري ممتع وشيق.</p>
+                    <span class="level-tag">جميع السنوات</span>
                 </div>
-                <div class="card">
-                    <i class="fa-solid fa-book-open card-icon"></i>
+
+                <div class="card-level featured">
+                    <div class="badge-pop">الأكثر إقبالاً</div>
+                    <div class="card-icon bg-secondary"><i class="fa-solid fa-microscope"></i></div>
                     <h3>التعليم المتوسط</h3>
-                    <p>تعميق المفاهيم في الفيزياء، الرياضيات، والتجهيز للشهادة المتوسطة.</p>
+                    <p>تفكيك تعقيدات الفيزياء والرياضيات مع تحضير مكثف لشهادة التعليم المتوسط (BEM).</p>
+                    <span class="level-tag">تحضير للشهادات</span>
                 </div>
-                <div class="card">
-                    <i class="fa-solid fa-user-graduate card-icon"></i>
+
+                <div class="card-level">
+                    <div class="card-icon bg-accent"><i class="fa-solid fa-atom"></i></div>
                     <h3>التعليم الثانوي</h3>
-                    <p>تحضير شامل لجميع الشعب (علمي، أدبي، تقني) مع حلول بكالوريا نموذجية.</p>
+                    <p>شرح عميق للمناهج (علمي، أدبي، تقني رياضيات) مع حلول نماذج البكالوريا برؤية شمولية.</p>
+                    <span class="level-tag">تحضير للبكالوريا</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Real Lessons & Exercises Section -->
-    <section id="lessons" class="section bg-light">
+    <!-- Interactive Knowledge Hub (Lessons & Quizzes) -->
+    <section id="hub" class="section bg-light">
         <div class="container">
-            <h2 class="section-title">بنك الدروس والتمارين التفاعلية</h2>
-            <div class="lessons-grid">
+            <div class="section-header text-center">
+                <span class="sub-title">محتوى تفاعلي</span>
+                <h2>بنك الدروس والتمارين التطبيقية</h2>
+                <p>اختر المادة والمستوى واستعرض الدروس مع حلولها النموذجية فوراً</p>
+                <div class="header-line"></div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">الكل</button>
+                <button class="filter-btn" data-filter="math">الرياضيات</button>
+                <button class="filter-btn" data-filter="physics">الفيزياء</button>
+                <button class="filter-btn" data-filter="science">العلوم الطبيعية</button>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="hub-grid" id="hubGrid">
                 
-                <!-- الدرس الأول -->
-                <article class="lesson-card">
-                    <div class="lesson-header">
-                        <span class="badge badge-math">الرياضيات - ثانوي</span>
-                        <h3>المعادلات من الدرجة الثانية</h3>
+                <!-- Math Card -->
+                <article class="hub-card" data-category="math">
+                    <div class="hub-card-header">
+                        <span class="category-badge math-bg"><i class="fa-solid fa-calculator"></i> رياضيات - ثانوي</span>
+                        <h3>حل المعادلة من الدرجة الثانية ($\Delta$)</h3>
                     </div>
-                    <div class="lesson-body">
-                        <h4>📌 ملخص الدرس:</h4>
-                        <p>تكتب المعادلة على الشكل: $ax^2 + bx + c = 0$. يتم حساب المميز $\Delta = b^2 - 4ac$:</p>
-                        <ul>
-                            <li>إذا كان $\Delta > 0$: يوجد حلان مختلفان.</li>
-                            <li>إذا كان $\Delta = 0$: يوجد حل مضاعف.</li>
-                            <li>إذا كان $\Delta < 0$: لا يوجد حل في $\mathbb{R}$.</li>
-                        </ul>
-                        <hr>
-                        <h4>📝 تمرين تطبيق:</h4>
-                        <p>حل في مجموعة الأعداد الحقيقية المعادلة التالية: $x^2 - 5x + 6 = 0$.</p>
-                        <details class="solution-box">
-                            <summary>عرض الحل النموذجي</summary>
-                            <p><strong>الحل:</strong> $a=1, b=-5, c=6$<br>
-                            $\Delta = (-5)^2 - 4(1)(6) = 25 - 24 = 1$<br>
-                            بما أن $\Delta > 0$ فإن الحلول هي: $x_1 = 2$ و $x_2 = 3$.</p>
+                    <div class="hub-card-body">
+                        <div class="concept-box">
+                            <h4>📌 القاعدة العامة:</h4>
+                            <p>المعادلة: $ax^2 + bx + c = 0$ (حيث $a \neq 0$). المميز: $\Delta = b^2 - 4ac$</p>
+                        </div>
+                        <div class="exercise-box">
+                            <h4>📝 تمرين تطبيقي:</h4>
+                            <p>حل في $\mathbb{R}$ المعادلة التالية: <strong>$x^2 - 6x + 9 = 0$</strong></p>
+                        </div>
+                        <details class="interactive-solution">
+                            <summary><i class="fa-solid fa-key"></i> إظهار الحل النموذجي والتفاصيل</summary>
+                            <div class="solution-content">
+                                <p>1. تحديد المعاملات: $a=1, b=-6, c=9$</p>
+                                <p>2. حساب المميز: $\Delta = (-6)^2 - 4(1)(9) = 36 - 36 = 0$</p>
+                                <p>3. الاستنتاج: بما أن $\Delta = 0$، يوجد حل مضاعف:</p>
+                                <p class="highlight-math">$x = \frac{-b}{2a} = \frac{6}{2} = 3$</p>
+                            </div>
                         </details>
                     </div>
                 </article>
 
-                <!-- الدرس الثاني -->
-                <article class="lesson-card">
-                    <div class="lesson-header">
-                        <span class="badge badge-physics">الفيزياء - متوسط</span>
-                        <h3>قانون أوم والدارة الكهربائية</h3>
+                <!-- Physics Card -->
+                <article class="hub-card" data-category="physics">
+                    <div class="hub-card-header">
+                        <span class="category-badge physics-bg"><i class="fa-solid fa-bolt"></i> فيزياء - متوسط</span>
+                        <h3>قانون أوم والحسابات الكهربائية</h3>
                     </div>
-                    <div class="lesson-body">
-                        <h4>📌 ملخص الدرس:</h4>
-                        <p>ينص قانون أوم على أن التوتر الكهربائي $U$ بين طرفي ناقل أوم متناسب طردياً مع شدة التيار $I$ الذي يمر فيه:</p>
-                        <p class="formula">$U = R \times I$</p>
-                        <hr>
-                        <h4>📝 تمرين تطبيق:</h4>
-                        <p>احسب التوتر $U$ إذا كانت المقاومة $R = 20\,\Omega$ وشدة التيار $I = 0.5\,\text{A}$.</p>
-                        <details class="solution-box">
-                            <summary>عرض الحل النموذجي</summary>
-                            <p><strong>الحل:</strong> بتطبيق القانون مباشرة:<br>
-                            $U = 20 \times 0.5 = 10\,\text{V}$.</p>
+                    <div class="hub-card-body">
+                        <div class="concept-box">
+                            <h4>📌 القانون الأساسي:</h4>
+                            <p>التوتر ($U$) = المقاومة ($R$) $\times$ شدة التيار ($I$)</p>
+                        </div>
+                        <div class="exercise-box">
+                            <h4>📝 تمرين تطبيقي:</h4>
+                            <p>جهاز كهربائي مقاوَمته $R = 50\,\Omega$ يمر فيه تيار شدته $I = 0.2\,\text{A}$. احسب التوتر $U$؟</p>
+                        </div>
+                        <details class="interactive-solution">
+                            <summary><i class="fa-solid fa-key"></i> إظهار الحل النموذجي والتفاصيل</summary>
+                            <div class="solution-content">
+                                <p>تطبيق مباشر للقانون:</p>
+                                <p class="highlight-math">$U = R \times I = 50 \times 0.2 = 10\,\text{V}$</p>
+                                <p><strong>النتيجة:</strong> التوتر بين طرفي الجهاز هو 10 فولت.</p>
+                            </div>
                         </details>
                     </div>
                 </article>
 
-                <!-- الدرس الثالث -->
-                <article class="lesson-card">
-                    <div class="lesson-header">
-                        <span class="badge badge-science">العلوم - ابتدائي ومتوسط</span>
-                        <h3>التركيب الضوئي عند النبات</h3>
+                <!-- Science Card -->
+                <article class="hub-card" data-category="science">
+                    <div class="hub-card-header">
+                        <span class="category-badge science-bg"><i class="fa-solid fa-leaf"></i> علوم - ابتدائي ومتوسط</span>
+                        <h3>عملية التركيب الضوئي</h3>
                     </div>
-                    <div class="lesson-body">
-                        <h4>📌 ملخص الدرس:</h4>
-                        <p>عملية يقوم بها النبات الأخضر لصنع غذائه باستغلال الضوء، غاز ثاني أكسيد الكربون ($CO_2$) والماء، وينتج غاز الأكسجين ($O_2$).</p>
-                        <hr>
-                        <h4>📝 تمرين تطبيق:</h4>
-                        <p>ما هي العناصر الأربعة الأساسية لحدوث عملية التركيب الضوئي؟</p>
-                        <details class="solution-box">
-                            <summary>عرض الحل النموذجي</summary>
-                            <p><strong>الحل:</strong> 1. الضوء، 2. اليخضور (الكلوروفيل)، 3. الماء والأملاح المعدنية، 4. غاز ثاني أكسيد الكربون.</p>
+                    <div class="hub-card-body">
+                        <div class="concept-box">
+                            <h4>📌 المفاهيم الأساسية:</h4>
+                            <p>التركيب الضوئي هو ظاهرة حييوية يتم فيها تحويل الطاقة الضوئية إلى طاقة كيميائية مخزنة في المادة العضوية.</p>
+                        </div>
+                        <div class="exercise-box">
+                            <h4>📝 تمرين تطبيقي:</h4>
+                            <p>ما هو الغاز الممتص والغاز النامج عن عملية التركيب الضوئي في وجود الضوء؟</p>
+                        </div>
+                        <details class="interactive-solution">
+                            <summary><i class="fa-solid fa-key"></i> إظهار الحل النموذجي والتفاصيل</summary>
+                            <div class="solution-content">
+                                <p>• <strong>الغاز الممتص:</strong> ثاني أكسيد الكربون ($CO_2$).</p>
+                                <p>• <strong>الغاز المنطلق:</strong> غاز الأكسجين ($O_2$).</p>
+                            </div>
                         </details>
                     </div>
                 </article>
@@ -142,43 +214,88 @@
         </div>
     </section>
 
-    <!-- Interactive AI Teacher Chat Bot Section -->
+    <!-- AI Teacher Bot Section -->
     <section id="ai-teacher" class="section">
         <div class="container">
-            <h2 class="section-title">الأستاذ الافتراضي الذكي</h2>
-            <p class="section-subtitle">اسأل الأستاذ في أي مادة، اطلب شرح مفهوم، أو اطلب منه إنشاء تمرين لك فوراً!</p>
-            
-            <div class="chat-container">
-                <div class="chat-header">
-                    <div class="bot-info">
-                        <i class="fa-solid fa-robot avatar-icon"></i>
+            <div class="section-header text-center">
+                <span class="sub-title">تفوق بالذكاء الاصطناعي</span>
+                <h2>الأستاذ الافتراضي الذكي (Amin AI Teacher)</h2>
+                <p>مساعدك المباشر للإجابة على التساؤلات الصعبة وتوليد التمارين المخصصة</p>
+                <div class="header-line"></div>
+            </div>
+
+            <div class="ai-chat-wrapper">
+                <div class="chat-top-bar">
+                    <div class="bot-profile">
+                        <div class="bot-avatar-wrapper">
+                            <i class="fa-solid fa-robot"></i>
+                            <span class="online-indicator"></span>
+                        </div>
                         <div>
-                            <h3>الأستاذ أمين (ذكاء اصطناعي)</h3>
-                            <span class="status-online">متصل الآن لمساعدتك</span>
+                            <h3>الأستاذ أمين الذكي</h3>
+                            <span class="bot-status">متصل جاهز لمساعدتك وصيغ التمارين</span>
+                        </div>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="chat-btn-clear" title="مسح المحادثة"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                </div>
+
+                <div class="chat-messages" id="chatBox">
+                    <div class="msg-item bot">
+                        <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+                        <div class="msg-bubble">
+                            <p>أهلاً بك يا بطل في **أكاديمية أمين الإلكترونية**! 🎓</p>
+                            <p>أنا أستاذك الافتراضي الذكي. كيف يمكنني مساعدتك اليوم؟ يمكنك أن تطلب مني:</p>
+                            <ul>
+                               <li>شرح كود أو قانون فيزيائي/رياضي.</li>
+                               <li>صياغة تمرين مخصص لمستواك الدراسي.</li>
+                               <li>تقديم نصائح للمذاكرة المنهجية.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                <div class="chat-box" id="chatBox">
-                    <div class="message bot-message">
-                        <i class="fa-solid fa-robot bot-avatar"></i>
-                        <div class="message-content">
-                            أهلاً بك يا بطل! أنا أستاذك الافتراضي في أكاديمية أمين. يمكنك أن تطلب مني شرح أي درس أو صياغة تمرين في (الرياضيات، الفيزياء، العلوم...). كيف أساعدك اليوم؟
-                        </div>
-                    </div>
-                </div>
-                <form class="chat-input-area" id="chatForm">
-                    <input type="text" id="userInput" placeholder="اكتب سؤالك أو اطلب تمرينك هنا..." required autocomplete="off">
-                    <button type="submit" class="btn-send"><i class="fa-solid fa-paper-plane"></i></button>
+
+                <form class="chat-input-wrapper" id="chatForm">
+                    <input type="text" id="userInput" placeholder="اسأل الأستاذ أمين عن أي درس أو تمرين..." required autocomplete="off">
+                    <button type="submit" class="btn-send-msg">
+                        <span>إرسال</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
                 </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer" id="contact">
-        <div class="container footer-content">
+    <footer class="main-footer" id="contact">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <span class="brand-title">أكاديمية أمين</span>
+                </div>
+                <p>منصة تعليمية إلكترونية شمولية تعتمد أحدث تقنيات الذكاء الاصطناعي لتطوير وتحسين مستوى الطلاب في جميع المراحل الدراسية.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>روابط السريعة</h4>
+                <ul>
+                    <li><a href="#hero">الرئيسية</a></li>
+                    <li><a href="#levels">المستويات الدراسية</a></li>
+                    <li><a href="#hub">بنك التمارين</a></li>
+                    <li><a href="#ai-teacher">الأستاذ الذكي</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-team">
+                <h4>فريق العمل والقيادة</h4>
+                <p><i class="fa-solid fa-user-gear"></i> تطوير وبناء: <strong>Mlizi Lounas</strong></p>
+                <p><i class="fa-solid fa-envelope"></i> البريد الرسمي: <a href="mailto:mliziayob@gmail.com">mliziayob@gmail.com</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
             <p>&copy; 2026 أكاديمية أمين الإلكترونية. جميع الحقوق محفوظة.</p>
-            <p>فريق العمل والتطوير: <strong>Mlizi Lounas</strong> | للتواصل: <a href="mailto:mliziayob@gmail.com">mliziayob@gmail.com</a></p>
         </div>
     </footer>
 
