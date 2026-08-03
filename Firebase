@@ -1,0 +1,142 @@
+// js/database.js - نظام إدارة البيانات
+
+import { getFirestore, collection, doc, setDoc, getDoc, updateDoc, deleteDoc, query, where, getDocs, orderBy, limit } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+class Database {
+    constructor() {
+        this.db = getFirestore();
+    }
+
+    // ===== إدارة المستخدمين =====
+    
+    async getUserData(uid) {
+        const docRef = doc(this.db, "users", uid);
+        const docSnap = await getDoc(docRef);
+        return docSnap.exists() ? docSnap.data() : null;
+    }
+
+    async updateUserProgress(uid, subject, progress) {
+        const userRef = doc(this.db, "users", uid);
+        await updateDoc(userRef, {
+            [`progress.${subject}`]: progress,
+            updatedAt: new Date().toISOString()
+        });
+    }
+
+    // ===== إدارة الدروس =====
+    
+    async getLessons(grade, subject) {
+        const lessonsRef = collection(this.db, "lessons");
+        const q = query(lessonsRef, 
+            where("grade", "==", grade),
+            where("subject", "==", subject),
+            orderBy("order")
+        );
+        const querySnapshot = await getDocs(q);
+        return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    }
+
+    async getLesson(lessonId) {
+        const docRef = doc(this.db, "lessons", lessonId);
+        const docSnap = await getDoc(docRef);
+        return docSnap.exists() ? { id: docSnap.id, ...docSnap.data() } : null;
+    }
+
+    async createLesson(lessonData) {
+        const lessonsRef = collection(this.db, "lessons");
+        const docRef = await addDoc(lessonsRef, {
+            ...lessonData,
+            createdAt: new Date().toISOString(),
+            views: 0,
+            likes: 0
+        });
+        return docRef.id;
+    }
+
+    // ===== إدارة الاختبارات =====
+    
+    async getQuizzes(grade, subject) {
+        const quizzesRef = collection(this.db, "quizzes");
+        const q = query(quizzesRef,
+            where("grade", "==", grade),
+            where("subject", "==", subject)
+        );
+        const querySnapshot = await getDocs(q);
+        return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    }
+
+    async submitQuizResult(userId, quizId, score, answers) {
+        const resultRef = doc(this.db, "quiz_results", `${userId}_${quizId}`);
+        await setDoc(resultRef, {
+            userId,
+            quizId,
+            score,
+            answers,
+            submittedAt: new Date().toISOString()
+        });
+        
+        // تحديث تقدم المستخدم
+        await this.updateUserProgress(userId, 'quizzes', { quizId, score });
+        return true;
+    }
+
+    // ===== إدارة المحادثات =====
+    
+    async saveChatHistory(userId, lessonId, messages) {
+        const chatRef = doc(this.db, "chat_history", `${userId}_${lessonId}`);
+        await setDoc(chatRef, {
+            userId,
+            lessonId,
+            messages,
+            lastUpdated: new Date().toISOString()
+        });
+    }
+
+    async getChatHistory(userId, lessonId) {
+        const docRef = doc(this.db, "chat_history", `${userId}_${lessonId}`);
+        const docSnap = await getDoc(docRef);
+        return docSnap.exists() ? docSnap.data().messages : [];
+    }
+
+    // ===== إدارة الإنجازات =====
+    
+    async getAchievements(userId) {
+        const achievementsRef = collection(this.db, "achievements");
+        const q = query(achievementsRef, where("userId", "==", userId));
+        const querySnapshot = await getDocs(q);
+        return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    }
+
+    async unlockAchievement(userId, achievementId) {
+        const achievementRef = doc(this.db, "achievements", `${userId}_${achievementId}`);
+        await setDoc(achievementRef, {
+            userId,
+            achievementId,
+            unlockedAt: new Date().toISOString()
+        });
+    }
+
+    // ===== تحليلات التعلم =====
+    
+    async getUserAnalytics(userId) {
+        const analyticsRef = collection(this.db, "analytics");
+        const q = query(analyticsRef, 
+            where("userId", "==", userId),
+            orderBy("date", "desc"),
+            limit(30)
+        );
+        const querySnapshot = await getDocs(q);
+        return querySnapshot.docs.map(doc => doc.data());
+    }
+
+    async logActivity(userId, activity) {
+        const analyticsRef = collection(this.db, "analytics");
+        await addDoc(analyticsRef, {
+            userId,
+            ...activity,
+            timestamp: new Date().toISOString()
+        });
+    }
+}
+
+export default Database;
