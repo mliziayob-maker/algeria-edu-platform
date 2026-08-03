@@ -1,1 +1,0 @@
-# algeria-edu-platform
