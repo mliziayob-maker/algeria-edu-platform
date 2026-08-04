@@ -21,7 +21,9 @@ module.exports = async (req, res) => {
     try {
         let body = req.body;
         if (typeof body === 'string') {
-            body = JSON.parse(body);
+            try {
+                body = JSON.parse(body);
+            } catch (e) {}
         }
 
         const message = body?.message || body?.prompt || '';
@@ -30,9 +32,9 @@ module.exports = async (req, res) => {
             return res.status(400).json({ reply: 'يرجى كتابة سؤال أولاً.' });
         }
 
-        // استخدام واجهة v1beta مع موديل gemini-1.5-flash
         const cleanKey = apiKey.trim();
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${cleanKey}`;
+        // استخدام اسم النموذج المعتمد والمستقر gemini-2.0-flash
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${cleanKey}`;
 
         const apiResponse = await fetch(url, {
             method: 'POST',
@@ -51,12 +53,12 @@ module.exports = async (req, res) => {
         }
 
         if (data.error) {
-            return res.status(500).json({ reply: `خطأ Google API: ${data.error.message}` });
+            return res.status(500).json({ reply: `خطأ جوجل API: ${data.error.message}` });
         }
 
-        return res.status(500).json({ reply: 'لم يتم استلام إجابة من الذكاء الاصطناعي.' });
+        return res.status(500).json({ reply: 'لم يتم استلام إجابة، أعد المحاولة.' });
 
     } catch (err) {
-        return res.status(500).json({ reply: `خطأ في الخادم الداخلي: ${err.message}` });
+        return res.status(500).json({ reply: `خطأ خادم داخلي: ${err.message}` });
     }
 };
