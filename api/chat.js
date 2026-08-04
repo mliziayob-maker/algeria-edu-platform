@@ -1,6 +1,5 @@
 // api/chat.js
 export default async function handler(req, res) {
-    // إتاحة CORS لتفادي مشاكل الحظر
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -27,7 +26,8 @@ export default async function handler(req, res) {
             return res.status(400).json({ reply: 'يرجى كتابة سؤال أولاً.' });
         }
 
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey.trim()}`;
+        // استخدام v1 والموديل المستقر gemini-1.5-flash
+        const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey.trim()}`;
 
         const response = await fetch(url, {
             method: 'POST',
