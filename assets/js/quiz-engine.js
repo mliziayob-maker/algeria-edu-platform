@@ -1,5 +1,5 @@
 module.exports = async (req, res) => {
-    // إعدادات CORS
+    // إعدادات CORS للسماح بالطلبات من التطبيق
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -15,13 +15,17 @@ module.exports = async (req, res) => {
     const apiKey = process.env.GEMINI_API_KEY;
 
     if (!apiKey) {
-        return res.status(500).json({ reply: 'مفتاح الـ API غير مهيأ في Vercel.' });
+        return res.status(500).json({ reply: 'مفتاح الـ API غير مهيأ في متغيرات البيئة بـ Vercel.' });
     }
 
     try {
         let body = req.body;
         if (typeof body === 'string') {
-            body = JSON.parse(body);
+            try {
+                body = JSON.parse(body);
+            } catch (e) {
+                // استمرار التنفيذ إذا كان النص خاماً
+            }
         }
 
         const message = body?.message || body?.prompt || '';
@@ -31,7 +35,7 @@ module.exports = async (req, res) => {
         }
 
         const cleanKey = apiKey.trim();
-        // التحديث لنموذج gemini-2.5-flash
+        // استخدام اسم النموذج المعتمد المحدث gemini-2.5-flash
         const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${cleanKey}`;
 
         const apiResponse = await fetch(url, {
@@ -51,12 +55,14 @@ module.exports = async (req, res) => {
         }
 
         if (data.error) {
-            return res.status(500).json({ reply: `خطأ Google API: ${data.error.message}` });
+            console.error("Google API Error Details:", data.error);
+            return res.status(500).json({ reply: `خطأ من جوجل: ${data.error.message || 'تعذر معالجة الطلب'}` });
         }
 
-        return res.status(500).json({ reply: 'لم يتم استلام إجابة من الذكاء الاصطناعي.' });
+        return res.status(500).json({ reply: 'لم يتم استلام إجابة من الذكاء الاصطناعي، أعد المحاولة.' });
 
     } catch (err) {
+        console.error("Internal Server Error:", err);
         return res.status(500).json({ reply: `خطأ في الخادم الداخلي: ${err.message}` });
     }
 };
