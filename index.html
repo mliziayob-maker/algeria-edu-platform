@@ -2,729 +2,218 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>أكاديمية أمين الإلكترونية | Amin Electronic Academy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية أمين الإلكترونية | منظومة التعلم الذكي</title>
     
-    <!-- خط Cairo والأيقونات -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <!-- تحسين التباين والخطوط (Cairo Font) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS الأساسي وتنسيقات الوصول -->
+    <link rel="stylesheet" href="styles.css">
+    
     <style>
-        /* --- 1. VARIABLES & RESET --- */
+        /* تحسينات سريعة للتباين اللوني وقابلية القراءة (WCAG AA Compliant) */
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #0f172a;
-            --accent: #f59e0b;
-            --bg-body: #f8fafc;
-            --bg-card: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-            --radius-lg: 16px;
-            --radius-md: 10px;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
-            --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Cairo', sans-serif;
-            -webkit-tap-highlight-color: transparent;
+            --primary-color: #1d4ed8;
+            --text-dark: #0f172a;
+            --text-muted: #334155; /* تباين مرتفع عالي القرائية */
+            --bg-glass: rgba(255, 255, 255, 0.85);
         }
 
         body {
-            background-color: var(--bg-body);
-            color: var(--text-main);
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8fafc;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
             line-height: 1.6;
-            overflow-x: hidden;
         }
-
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
 
         .container {
-            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 20px;
         }
 
-        /* --- 2. HEADER & NAVIGATION --- */
-        .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border);
-            padding: 12px 0;
+        header {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 0;
+            margin-bottom: 30px;
         }
 
-        .nav-container {
+        .nav-wrapper {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            background: var(--primary);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .brand-title {
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: var(--secondary);
-            display: block;
-            line-height: 1.2;
-        }
-
-        .brand-subtitle {
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .menu-toggle {
-            background: none;
-            border: none;
             font-size: 1.5rem;
-            color: var(--secondary);
-            cursor: pointer;
-            display: block; /* Visible on mobile */
-        }
-
-        .nav-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: white;
-            flex-direction: column;
-            gap: 0;
-            border-bottom: 1px solid var(--border);
-            box-shadow: var(--shadow-md);
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-in-out;
-        }
-
-        .nav-menu.active {
-            max-height: 400px;
-        }
-
-        .nav-link {
-            padding: 14px 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            color: var(--text-muted);
-            border-bottom: 1px solid #f1f5f9;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: var(--primary);
-            background: #f8fafc;
-        }
-
-        /* --- 3. HERO SECTION --- */
-        .hero {
-            padding: 40px 0 30px;
-            text-align: center;
-            background: linear-gradient(180deg, #ffffff 0%, var(--bg-body) 100%);
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #eff6ff;
-            color: var(--primary);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .hero h1 {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--secondary);
-            line-height: 1.3;
-            margin-bottom: 15px;
-        }
-
-        .hero h1 span {
-            color: var(--primary);
-        }
-
-        .hero p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 25px;
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            border-radius: var(--radius-md);
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: all 0.2s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-        }
-
-        .btn-secondary {
-            background: white;
-            color: var(--secondary);
-            border: 1px solid var(--border);
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            background: white;
-            padding: 15px;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border);
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-item strong {
-            display: block;
-            font-size: 1.1rem;
-            color: var(--primary);
             font-weight: 800;
+            color: var(--primary-color);
         }
 
-        .stat-item span {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            font-weight: 600;
+        /* تنسيق الأستاذ الذكي التفاعلي */
+        .chat-section {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            border: 1px solid #e2e8f0;
         }
 
-        /* --- 4. SECTIONS & CARDS --- */
-        .section {
-            padding: 35px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .section-header h2 {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--secondary);
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
-
-        .card-level {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 20px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .card-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-        }
-
-        .bg-p { background: #eff6ff; color: #2563eb; }
-        .bg-s { background: #fef3c7; color: #d97706; }
-        .bg-a { background: #dcfce7; color: #16a34a; }
-
-        .card-level h3 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-        }
-
-        .card-level p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* --- 5. INTERACTIVE HUB (LESSONS & EXERCISES) --- */
-        .filter-bar {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            scroll-behavior: smooth;
-        }
-
-        .filter-btn {
-            padding: 8px 16px;
-            border-radius: 20px;
-            background: white;
-            border: 1px solid var(--border);
-            font-size: 0.85rem;
-            font-weight: 700;
-            white-space: nowrap;
-            cursor: pointer;
-        }
-
-        .filter-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .hub-card {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 18px;
-            border: 1px solid var(--border);
-            margin-bottom: 15px;
-        }
-
-        .badge-subject {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .badge-math { background: #e0f2fe; color: #0369a1; }
-        .badge-physics { background: #fff7ed; color: #c2410c; }
-
-        .interactive-solution {
-            margin-top: 12px;
-            background: #f8fafc;
-            border-radius: 8px;
-            padding: 10px;
-            border-right: 3px solid var(--primary);
-            font-size: 0.85rem;
-        }
-
-        .interactive-solution summary {
-            font-weight: 700;
-            color: var(--primary);
-            cursor: pointer;
-        }
-
-        /* --- 6. AI CHAT INTERFACE --- */
-        .chat-box-container {
-            background: white;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-md);
-            overflow: hidden;
-        }
-
-        .chat-header {
-            background: var(--secondary);
-            color: white;
-            padding: 12px 15px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .bot-avatar {
-            width: 35px;
-            height: 35px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .chat-messages {
-            height: 280px;
-            padding: 15px;
+        .chat-box {
+            height: 300px;
             overflow-y: auto;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            padding: 15px;
+            background: #f1f5f9;
+            margin-bottom: 15px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            background: #f1f5f9;
+            gap: 10px;
         }
 
         .msg-bubble {
-            max-width: 85%;
-            padding: 10px 14px;
+            max-width: 80%;
+            padding: 10px 15px;
             border-radius: 12px;
-            font-size: 0.85rem;
-            line-height: 1.4;
-        }
-
-        .msg-bot {
-            background: white;
-            color: var(--secondary);
-            align-self: flex-start;
-            border-bottom-right-radius: 2px;
-            box-shadow: var(--shadow-sm);
+            font-size: 0.95rem;
+            font-weight: 600;
         }
 
         .msg-user {
-            background: var(--primary);
+            background: var(--primary-color);
             color: white;
+            align-self: flex-start;
+        }
+
+        .msg-bot {
+            background: #ffffff;
+            color: var(--text-dark);
+            border: 1px solid #cbd5e1;
             align-self: flex-end;
-            border-bottom-left-radius: 2px;
         }
 
-        .chat-input-form {
+        .chat-input-area {
             display: flex;
-            padding: 10px;
-            background: white;
-            border-top: 1px solid var(--border);
+            gap: 10px;
         }
 
-        .chat-input-form input {
+        .chat-input-area input {
             flex: 1;
-            padding: 10px;
-            border: 1px solid var(--border);
+            padding: 12px;
+            border: 1px solid #cbd5e1;
             border-radius: 8px;
-            outline: none;
-            font-size: 0.85rem;
+            font-family: inherit;
         }
 
-        .chat-input-form button {
-            background: var(--primary);
+        .chat-input-area button {
+            background: var(--primary-color);
             color: white;
             border: none;
-            padding: 0 15px;
-            margin-right: 8px;
+            padding: 12px 24px;
             border-radius: 8px;
+            font-weight: 700;
             cursor: pointer;
         }
 
-        /* --- FOOTER --- */
-        .footer {
-            background: var(--secondary);
-            color: white;
-            padding: 25px 0 15px;
-            font-size: 0.8rem;
-            text-align: center;
-            margin-top: 30px;
+        /* تنسيق الإحصائيات الحقيقية */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
         }
 
-        .footer p { color: #94a3b8; margin-top: 5px; }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
 
-        /* --- DESKTOP MEDIA QUERIES --- */
-        @media (min-width: 768px) {
-            .menu-toggle { display: none; }
-            .nav-menu {
-                position: static;
-                max-height: none;
-                flex-direction: row;
-                box-shadow: none;
-                border: none;
-                width: auto;
-            }
-            .hero h1 { font-size: 2.5rem; }
-            .hero-actions { flex-direction: row; justify-content: center; }
-            .cards-grid { grid-template-columns: repeat(3, 1fr); }
-            .hub-grid { grid-template-columns: repeat(2, 1fr); }
+        .stat-num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color);
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
-    <header class="navbar">
-        <div class="container nav-container">
-            <div class="logo">
-                <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                <div>
-                    <span class="brand-title">أكاديمية أمين</span>
-                    <span class="brand-subtitle">ELECTRONIC ACADEMY</span>
-                </div>
-            </div>
-            
-            <button class="menu-toggle" id="menuToggle" aria-label="القائمة">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-
-            <nav class="nav-menu" id="navMenu">
-                <a href="#hero" class="nav-link active"><i class="fa-solid fa-house"></i> الرئيسية</a>
-                <a href="#levels" class="nav-link"><i class="fa-solid fa-layer-group"></i> المستويات</a>
-                <a href="#hub" class="nav-link"><i class="fa-solid fa-book"></i> الدروس والتمارين</a>
-                <a href="#ai-teacher" class="nav-link"><i class="fa-solid fa-robot"></i> الأستاذ الذكي</a>
+    <!-- الهيدر والتنقل -->
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">🎓 أكاديمية أمين الذكية</div>
+            <nav>
+                <span style="color: var(--text-muted); font-weight: 700;">المناهج الجزائرية (BEM / BAC)</span>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <div class="container">
-            <span class="hero-badge"><i class="fa-solid fa-bolt"></i> الجيل الجديد من التعليم الرقمي</span>
-            <h1>ارتقِ بمستواك الدراسي مع <br><span>أكاديمية أمين الذكية</span></h1>
-            <p>دروس تفاعلية، تمارين محلولة، وأستاذ افتراضي بالذكاء الاصطناعي يجيب على تساؤلاتك فوراً.</p>
+    <main class="container">
+
+        <!-- الإحصائيات الحقيقية المربوطة بقاعدة البيانات -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-num" id="real-student-count">--</div>
+                <div style="color: var(--text-muted); font-weight: 700;">طالب مسجل حقيقي</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">100%</div>
+                <div style="color: var(--text-muted); font-weight: 700;">تفاعل ذكي متوافق مع المنهاج</div>
+            </div>
+        </section>
+
+        <!-- قسم الأستاذ الذكي التفاعلي (AI Teacher Chat) -->
+        <section class="chat-section">
+            <h2 style="margin-top:0; color: var(--text-dark);">🤖 الأستاذ المساعد الذكي</h2>
+            <p style="color: var(--text-muted);">اطرح أي سؤال في الرياضيات، الفيزياء، أو العلوم وسيجيبك الأستاذ المساعد فوراً وفق المنهاج.</p>
             
-            <div class="hero-actions">
-                <a href="#hub" class="btn btn-primary"><i class="fa-solid fa-rocket"></i> استكشف التمارين والدروس</a>
-                <a href="#ai-teacher" class="btn btn-secondary"><i class="fa-solid fa-comments"></i> تجربة الأستاذ الذكي</a>
-            </div>
-
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <strong>+10K</strong>
-                    <span>تلميذ مسجل</span>
-                </div>
-                <div class="stat-item">
-                    <strong>+500</strong>
-                    <span>تمرين محلول</span>
-                </div>
-                <div class="stat-item">
-                    <strong>24/7</strong>
-                    <span>دعم بالذكاء الاصطناعي</span>
+            <div class="chat-box" id="chatBox">
+                <div class="msg-bubble msg-bot">
+                    مرحباً بك! أنا أستاذك الافتراضي في أكاديمية أمين. كيف يمكنني مساعدتك في دروسك اليوم؟
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Levels Section -->
-    <section id="levels" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>الأطوار التعليمية المشمولة</h2>
+            <form class="chat-input-area" id="chatForm">
+                <input type="text" id="userInput" placeholder="اكتب سؤالك هنا (مثال: اشرح لي قانون أوم)..." required>
+                <button type="submit">إرسال السؤال</button>
+            </form>
+        </section>
+
+        <!-- قسم التمارين التفاعلية (Interactive Quiz Section) -->
+        <section style="margin-bottom: 40px;">
+            <h2 style="color: var(--text-dark);">📝 بنك التمارين التفاعلية (تصحيح فوري)</h2>
+            <p style="color: var(--text-muted);">حل المسائل واحصل على تصحيح آلي وتقييم فوري لإجابتك:</p>
+            
+            <!-- الحاوية الديناميكية التي سيتم ملؤها بواسطة quiz-engine.js -->
+            <div id="interactive-quiz-container">
+                <p style="color: var(--text-muted);">جاري تحميل التمارين التفاعلية...</p>
             </div>
-            <div class="cards-grid">
-                <div class="card-level">
-                    <div class="card-icon bg-p"><i class="fa-solid fa-child"></i></div>
-                    <h3>التعليم الابتدائي</h3>
-                    <p>ترسيخ الأساسيات في الرياضيات، اللغة العربية والعلوم بشكل تبسيطي وشيق.</p>
-                </div>
-                <div class="card-level">
-                    <div class="card-icon bg-s"><i class="fa-solid fa-microscope"></i></div>
-                    <h3>التعليم المتوسط</h3>
-                    <p>تفكيك تعقيدات الفيزياء والرياضيات مع تحضير مكثف لشهادة التعليم المتوسط.</p>
-                </div>
-                <div class="card-level">
-                    <div class="card-icon bg-a"><i class="fa-solid fa-user-graduate"></i></div>
-                    <h3>التعليم الثانوي</h3>
-                    <p>تحضير شامل لجميع الشعب (علمي، أدبي، تقني) مع حلول بكالوريا نموذجية.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Knowledge Hub Section -->
-    <section id="hub" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>بنك الدروس والتمارين التطبيقية</h2>
-            </div>
+    </main>
 
-            <div class="filter-bar">
-                <button class="filter-btn active" data-filter="all">الكل</button>
-                <button class="filter-btn" data-filter="math">الرياضيات</button>
-                <button class="filter-btn" data-filter="physics">الفيزياء</button>
-            </div>
+    <!-- ======================================================== -->
+    <!-- السكربتات البرمجية بالترتيب الصحيح لتفادي مشاكل التحميل -->
+    <!-- ======================================================== -->
 
-            <div id="hubGrid">
-                <!-- Math Card -->
-                <article class="hub-card" data-category="math">
-                    <span class="badge-subject badge-math">رياضيات - ثانوي</span>
-                    <h3>حل المعادلة من الدرجة الثانية ($\Delta$)</h3>
-                    <p><strong>القاعدة:</strong> $ax^2 + bx + c = 0 \implies \Delta = b^2 - 4ac$</p>
-                    <p style="margin-top:5px;"><strong>📝 تمرين:</strong> حل في $\mathbb{R}$ المعادلة: $x^2 - 5x + 6 = 0$</p>
-                    
-                    <details class="interactive-solution">
-                        <summary><i class="fa-solid fa-key"></i> عرض الحل النموذجي</summary>
-                        <div style="margin-top:8px;">
-                            <p> المعاملات: $a=1, b=-5, c=6$</p>
-                            <p> $\Delta = (-5)^2 - 4(1)(6) = 25 - 24 = 1$</p>
-                            <p>بما أن $\Delta > 0$، يوجد حلان: $x_1 = 2$ و $x_2 = 3$.</p>
-                        </div>
-                    </details>
-                </article>
+    <!-- 1. سكربت المحادثة الأساسي والتفاعل -->
+    <script src="script.js"></script>
 
-                <!-- Physics Card -->
-                <article class="hub-card" data-category="physics">
-                    <span class="badge-subject badge-physics">فيزياء - متوسط</span>
-                    <h3>قانون أوم والحسابات الكهربائية</h3>
-                    <p><strong>القانون:</strong> $U = R \times I$</p>
-                    <p style="margin-top:5px;"><strong>📝 تمرين:</strong> احسب $U$ إذا كانت المقاومة $R = 20\,\Omega$ وشدة التيار $I = 0.5\,\text{A}$.</p>
-                    
-                    <details class="interactive-solution">
-                        <summary><i class="fa-solid fa-key"></i> عرض الحل النموذجي</summary>
-                        <div style="margin-top:8px;">
-                            <p>التطبيق المباشر للقانون:</p>
-                            <p style="color:var(--primary); font-weight:bold;">$U = 20 \times 0.5 = 10\,\text{V}$</p>
-                        </div>
-                    </details>
-                </article>
-            </div>
-        </div>
-    </section>
+    <!-- 2. محرك التمارين التفاعلية المطور -->
+    <script src="assets/js/quiz-engine.js"></script>
 
-    <!-- AI Teacher Section -->
-    <section id="ai-teacher" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>الأستاذ الافتراضي الذكي</h2>
-            </div>
+    <!-- 3. ربط قاعدة البيانات Supabase (عند توفر المفاتيح) -->
+    <!-- <script type="module" src="assets/js/supabase-client.js"></script> -->
 
-            <div class="chat-box-container">
-                <div class="chat-header">
-                    <div class="bot-avatar"><i class="fa-solid fa-robot"></i></div>
-                    <div>
-                        <h4 style="font-size:0.95rem;">الأستاذ أمين الذكي</h4>
-                        <span style="font-size:0.7rem; color:#4ade80;">متصل جاهز للإجابة وصياغة التمارين</span>
-                    </div>
-                </div>
-
-                <div class="chat-messages" id="chatBox">
-                    <div class="msg-bubble msg-bot">
-                        أهلاً بك! أنا أستاذك الافتراضي الذكي في أكاديمية أمين 🎓. اسألني في أي مادة أو اطلب مني صياغة تمرين لك فوراً!
-                    </div>
-                </div>
-
-                <form class="chat-input-form" id="chatForm">
-                    <input type="text" id="userInput" placeholder="اكتب سؤالك هنا..." required autocomplete="off">
-                    <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 أكاديمية أمين الإلكترونية. جميع الحقوق محفوظة.</p>
-            <p>تطوير وإشراف: <strong>Mlizi Lounas</strong> | للتواصل: mliziayob@gmail.com</p>
-        </div>
-    </footer>
-
-    <!-- JavaScript Engines -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Mobile Menu Toggle
-            const menuToggle = document.getElementById('menuToggle');
-            const navMenu = document.getElementById('navMenu');
-
-            if (menuToggle && navMenu) {
-                menuToggle.addEventListener('click', () => {
-                    navMenu.classList.toggle('active');
-                });
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.addEventListener('click', () => navMenu.classList.remove('active'));
-                });
-            }
-
-            // 2. Interactive Filter
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const hubCards = document.querySelectorAll('.hub-card');
-
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-
-                    const filter = btn.getAttribute('data-filter');
-                    hubCards.forEach(card => {
-                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
-
-            // 3. AI Chat Simulation Engine
-            const chatForm = document.getElementById('chatForm');
-            const userInput = document.getElementById('userInput');
-            const chatBox = document.getElementById('chatBox');
-
-            if (chatForm && userInput && chatBox) {
-                chatForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const text = userInput.value.trim();
-                    if (!text) return;
-
-                    // Append User Message
-                    appendMsg(text, 'user');
-                    userInput.value = '';
-
-                    // AI Thinking Simulation
-                    setTimeout(() => {
-                        const reply = generateSmartReply(text);
-                        appendMsg(reply, 'bot');
-                    }, 800);
-                });
-            }
-
-            function appendMsg(text, sender) {
-                const msgDiv = document.createElement('div');
-                msgDiv.classList.add('msg-bubble', sender === 'user' ? 'msg-user' : 'msg-bot');
-                msgDiv.textContent = text;
-                chatBox.appendChild(msgDiv);
-                chatBox.scrollTop = chatBox.scrollHeight;
-            }
-
-            function generateSmartReply(query) {
-                const q = query.toLowerCase();
-                if (q.includes('رياضيات') || q.includes('حساب') || q.includes('معادلة')) {
-                    return 'ممتاز! في مادة الرياضيات، يمكننا تفكيك المسألة خطوة بخطوة. إليك تمرين تجريبي: حاول حل $x + 5 = 12$، واكتب إجابتك هنا لأقوم بتقييمها لك!';
-                } else if (q.includes('فيزياء') || q.includes('كهرباء') || q.includes('قانون')) {
-                    return 'في مادة الفيزياء نعتمد على التحليل والقوانين! ما هي المسألة الكهربائية أو الميكانيكية التي تود مناقشتها الآن؟';
-                } else if (q.includes('مرحبا') || q.includes('السلام') || q.includes('أهلا')) {
-                    return 'أهلاً بك! أنا أستاذك الافتراضي الذكي في أكاديمية أمين. كيف أستطيع مساعدتك في دراستك اليوم؟';
-                } else {
-                    return `تم استلام سؤالك حول: "${query}". أقوم الآن بتجهيز الشرح والتطبيقات التفاعلية المناسبة لمستواك!`;
-                }
-            }
-        });
-    </script>
 </body>
 </html>
