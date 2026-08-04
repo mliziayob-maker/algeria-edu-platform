@@ -1,4 +1,5 @@
-// api/chat.js
+// api/chat.js // Vercel trigger update
+
 export default async function handler(req, res) {
     // السماح بطلبات POST فقط
     if (req.method !== 'POST') {
