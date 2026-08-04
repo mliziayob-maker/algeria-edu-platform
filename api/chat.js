@@ -1,12 +1,9 @@
-// api/chat.js // Vercel trigger update
-
+// api/chat.js
 export default async function handler(req, res) {
-    // السماح بطلبات POST فقط
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method Not Allowed' });
     }
 
-    // جلب المفتاح من متغيرات البيئة في Vercel
     const apiKey = process.env.GEMINI_API_KEY;
 
     if (!apiKey) {
@@ -16,14 +13,15 @@ export default async function handler(req, res) {
     try {
         const { message } = req.body;
 
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+        // استخدام الموديل المستقر المباشر gemini-2.5-flash
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 contents: [{
-                    parts: [{ text: `أنت أستاذ افتراضي جزائري لشرح الدروس والحلول وفق المناهج التعليمية. إجابتك قصيرة ومباشرة ومفيدة. سؤال الطالب: ${message}` }]
+                    parts: [{ text: `أنت أستاذ افتراضي جزائري لشرح الدروس والحلول وفق المناهج التعليمية. اشرح باختصار وبطريقة مبسطة. سؤال الطالب: ${message}` }]
                 }]
             })
         });
@@ -33,12 +31,15 @@ export default async function handler(req, res) {
         if (data.candidates && data.candidates[0]?.content?.parts[0]?.text) {
             const botReply = data.candidates[0].content.parts[0].text;
             return res.status(200).json({ reply: botReply });
+        } else if (data.error) {
+            console.error("Google API Error:", data.error);
+            return res.status(500).json({ reply: `خطأ من API: ${data.error.message || 'يرجى التأكد من صلاحيات المفتاح'}` });
         } else {
-            return res.status(500).json({ reply: 'حدث خطأ أثناء معالجة الإجابة من الذكاء الاصطناعي.' });
+            return res.status(500).json({ reply: 'لم يتم استلام رد متاح، جرب إعادة السؤال.' });
         }
 
     } catch (error) {
-        console.error("API Error:", error);
+        console.error("API Fetch Error:", error);
         return res.status(500).json({ reply: 'عذراً، حدث خطأ في الاتصال بالخادم.' });
     }
 }
