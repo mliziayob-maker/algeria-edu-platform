@@ -13,8 +13,8 @@ export default async function handler(req, res) {
     try {
         const { message } = req.body;
 
-        // استخدام الموديل المستقر المباشر gemini-2.5-flash
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+        // استخدام اسم النموذج الرسمي المعتمد gemini-2.0-flash
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -42,4 +42,4 @@ export default async function handler(req, res) {
         console.error("API Fetch Error:", error);
         return res.status(500).json({ reply: 'عذراً، حدث خطأ في الاتصال بالخادم.' });
     }
-}
+                }
