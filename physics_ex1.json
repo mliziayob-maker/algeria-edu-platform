@@ -1,0 +1,11 @@
+{
+  "id": "ex-physics-001",
+  "phase": "متوسط",
+  "subject": "فيزياء",
+  "topic": "قانون أوم",
+  "question": "احسب الجهد الكهربائي U إذا كانت المقاومة R = 20 Ω وشدة التيار I = 0.5 A",
+  "answer": "10",
+  "hint": "استخدم القانون U = R × I",
+  "difficulty": 1,
+  "type": "open_answer"
+}
