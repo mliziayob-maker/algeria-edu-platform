@@ -1,5 +1,5 @@
-// api/chat.js
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
+    // إعدادات CORS
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -9,27 +9,32 @@ export default async function handler(req, res) {
     }
 
     if (req.method !== 'POST') {
-        return res.status(405).json({ reply: 'Method Not Allowed' });
+        return res.status(405).json({ reply: 'المسار يقبل طلبات POST فقط.' });
     }
 
     const apiKey = process.env.GEMINI_API_KEY;
 
     if (!apiKey) {
-        return res.status(500).json({ reply: 'مفتاح الـ API غير مهيأ في إعدادات السيرفر.' });
+        return res.status(500).json({ reply: 'مفتاح الـ API غير مهيأ في Vercel.' });
     }
 
     try {
-        const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+        let body = req.body;
+        if (typeof body === 'string') {
+            body = JSON.parse(body);
+        }
+
         const message = body?.message || body?.prompt || '';
 
         if (!message) {
             return res.status(400).json({ reply: 'يرجى كتابة سؤال أولاً.' });
         }
 
-        // استخدام v1 والموديل المستقر gemini-1.5-flash
-        const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey.trim()}`;
+        // استخدام واجهة v1beta مع موديل gemini-1.5-flash
+        const cleanKey = apiKey.trim();
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${cleanKey}`;
 
-        const response = await fetch(url, {
+        const apiResponse = await fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -39,21 +44,19 @@ export default async function handler(req, res) {
             })
         });
 
-        const data = await response.json();
+        const data = await apiResponse.json();
 
         if (data.candidates && data.candidates[0]?.content?.parts[0]?.text) {
             return res.status(200).json({ reply: data.candidates[0].content.parts[0].text });
-        } 
-        
-        if (data.error) {
-            console.error("Gemini Error:", data.error);
-            return res.status(500).json({ reply: `خطأ من جوجل: ${data.error.message}` });
         }
 
-        return res.status(500).json({ reply: 'لم يتم استلام إجابة، أعد المحاولة.' });
+        if (data.error) {
+            return res.status(500).json({ reply: `خطأ Google API: ${data.error.message}` });
+        }
+
+        return res.status(500).json({ reply: 'لم يتم استلام إجابة من الذكاء الاصطناعي.' });
 
     } catch (err) {
-        console.error("Server Error:", err);
-        return res.status(500).json({ reply: `خطأ سيرفر: ${err.message}` });
+        return res.status(500).json({ reply: `خطأ في الخادم الداخلي: ${err.message}` });
     }
-}
+};
