@@ -1,36 +1,43 @@
-// /api/chat.js - Vercel Serverless Function
+// api/chat.js
 export default async function handler(req, res) {
+    // السماح بطلبات POST فقط
     if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
+        return res.status(405).json({ error: 'Method Not Allowed' });
     }
 
-    const { message } = req.body;
-    const API_KEY = process.env.GEMINI_API_KEY; // يتم ضبطه في إعدادات Vercel
+    // جلب المفتاح من متغيرات البيئة في Vercel
+    const apiKey = process.env.GEMINI_API_KEY;
 
-    if (!API_KEY) {
-        return res.status(500).json({ error: 'مفتاح الـ API غير مهيأ' });
+    if (!apiKey) {
+        return res.status(500).json({ reply: 'مفتاح الـ API غير مهيأ في إعدادات السيرفر.' });
     }
-
-    const systemContext = `أنت أستاذ افتراضي ذكي في "أكاديمية أمين الإلكترونية". 
-    مهمتك مساعدة الطلاب في المناهج الجزائرية (ابتدائي، متوسط BEM، ثانوي BAC).
-    أجب باختصار، بأسلوب بيداغوجي مشجع، واستخدم لغة عربية سليمة مع تنسيق معادلات الرياضيات بالرموز عند الحاجة.`;
 
     try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
+        const { message } = req.body;
+
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify({
-                contents: [
-                    { role: 'user', parts: [{ text: `${systemContext}\n\nسؤال الطالب: ${message}` }] }
-                ]
+                contents: [{
+                    parts: [{ text: `أنت أستاذ افتراضي جزائري لشرح الدروس والحلول وفق المناهج التعليمية. إجابتك قصيرة ومباشرة ومفيدة. سؤال الطالب: ${message}` }]
+                }]
             })
         });
 
         const data = await response.json();
-        const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "عذراً، لم أستطع فهم السؤال، أعد الصياغة لطفا.";
 
-        return res.status(200).json({ reply });
+        if (data.candidates && data.candidates[0]?.content?.parts[0]?.text) {
+            const botReply = data.candidates[0].content.parts[0].text;
+            return res.status(200).json({ reply: botReply });
+        } else {
+            return res.status(500).json({ reply: 'حدث خطأ أثناء معالجة الإجابة من الذكاء الاصطناعي.' });
+        }
+
     } catch (error) {
-        return res.status(500).json({ error: 'حدث خطأ أثناء الاتصال بالخادم الذكي.' });
+        console.error("API Error:", error);
+        return res.status(500).json({ reply: 'عذراً، حدث خطأ في الاتصال بالخادم.' });
     }
 }
