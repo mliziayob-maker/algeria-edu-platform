@@ -1,0 +1,99 @@
+-- Enable UUID extension
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+-- Users table (extends Supabase auth)
+CREATE TABLE public.profiles (
+  id UUID PRIMARY KEY REFERENCES auth.users(id),
+  username TEXT UNIQUE,
+  full_name TEXT,
+  avatar_url TEXT,
+  phase TEXT CHECK (phase IN ('ابتدائي', 'متوسط', 'ثانوي')),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+
+-- Subjects table
+CREATE TABLE public.subjects (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name TEXT NOT NULL,
+  phase TEXT NOT NULL CHECK (phase IN ('ابتدائي', 'متوسط', 'ثانوي')),
+  description TEXT,
+  icon TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+
+-- Topics (units)
+CREATE TABLE public.topics (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  subject_id UUID REFERENCES public.subjects(id) ON DELETE CASCADE,
+  title TEXT NOT NULL,
+  description TEXT,
+  order_number INTEGER,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+
+-- Lessons
+CREATE TABLE public.lessons (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  topic_id UUID REFERENCES public.topics(id) ON DELETE CASCADE,
+  title TEXT NOT NULL,
+  content TEXT,
+  video_url TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+
+-- Exercises
+CREATE TABLE public.exercises (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  lesson_id UUID REFERENCES public.lessons(id) ON DELETE CASCADE,
+  question TEXT NOT NULL,
+  answer TEXT NOT NULL,
+  hint TEXT,
+  difficulty INTEGER CHECK (difficulty BETWEEN 1 AND 5),
+  type TEXT CHECK (type IN ('multiple_choice', 'open_answer', 'true_false')),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+
+-- User progress
+CREATE TABLE public.user_progress (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
+  exercise_id UUID REFERENCES public.exercises(id) ON DELETE CASCADE,
+  completed BOOLEAN DEFAULT false,
+  score INTEGER,
+  attempts INTEGER DEFAULT 0,
+  last_attempt_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
+  UNIQUE(user_id, exercise_id)
+);
+
+-- AI interactions log
+CREATE TABLE public.ai_interactions (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  user_id UUID REFERENCES public.profiles(id) ON DELETE SET NULL,
+  question TEXT NOT NULL,
+  response TEXT,
+  model_used TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+
+-- Enable Row Level Security (RLS)
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.subjects ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.topics ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.lessons ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.exercises ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.user_progress ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.ai_interactions ENABLE ROW LEVEL SECURITY;
+
+-- Basic RLS policies
+CREATE POLICY "Users can view their own profile"
+  ON public.profiles FOR SELECT USING (auth.uid() = id);
+
+CREATE POLICY "Users can update their own profile"
+  ON public.profiles FOR UPDATE USING (auth.uid() = id);
+
+-- Enable realtime
+BEGIN;
+  DROP PUBLICATION IF EXISTS supabase_realtime;
+  CREATE PUBLICATION supabase_realtime FOR ALL TABLES;
+COMMIT;
