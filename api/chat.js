@@ -13,8 +13,8 @@ export default async function handler(req, res) {
     try {
         const { message } = req.body;
 
-        // استخدام اسم النموذج الرسمي المعتمد gemini-2.0-flash
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+        // استخدام الموديل المستقر والمتاح مجاناً للجميع gemini-1.5-flash
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,7 +33,11 @@ export default async function handler(req, res) {
             return res.status(200).json({ reply: botReply });
         } else if (data.error) {
             console.error("Google API Error:", data.error);
-            return res.status(500).json({ reply: `خطأ من API: ${data.error.message || 'يرجى التأكد من صلاحيات المفتاح'}` });
+            // إظهار رسالة صديقة للمستخدم عند استهلاك الكوتا
+            if (data.error.code === 429 || data.error.message.includes('Quota')) {
+                return res.status(429).json({ reply: 'عذراً، وصل الأستاذ الذكي للحد الأقصى من الأسئلة في الدقيقة. يرجى الانتظار 30 ثانية والإعادة!' });
+            }
+            return res.status(500).json({ reply: 'حدث خطأ في الاتصال بالخدمة، يرجى المحاولة بعد قليل.' });
         } else {
             return res.status(500).json({ reply: 'لم يتم استلام رد متاح، جرب إعادة السؤال.' });
         }
@@ -42,4 +46,4 @@ export default async function handler(req, res) {
         console.error("API Fetch Error:", error);
         return res.status(500).json({ reply: 'عذراً، حدث خطأ في الاتصال بالخادم.' });
     }
-                }
+}
